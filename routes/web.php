@@ -16,7 +16,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', function () {
     $banners = Banner::orderBy('created_at', 'desc')->get();
-    return view('home', compact('banners'));
+    $latest_products = Product::orderBy('created_at', 'desc')->take(3)->get(); //latest products
+    return view('home', compact('latest_products', 'banners'));
 });
 
 // //Show on homepage:
@@ -31,7 +32,7 @@ Route::get('/', function () {
 // });
 
 
-// Route::get('/category/{category}', [ProductController::class, 'showByCategory'])->name('category.by_category');
+Route::get('/category/{category}', [ProductController::class, 'showByCategory'])->name('category.by_category');
 
 // Route::get('/products/{slug}', [ProductController::class, 'shopSingle'])->name('shop.single');
 

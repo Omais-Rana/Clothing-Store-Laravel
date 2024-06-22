@@ -84,13 +84,13 @@
                             <div class="tt-title d-inline-block float-none w-100 text-center">Trending Products</div>
                             <div class="tabs">
                                 <ul class="nav nav-tabs justify-content-center">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab"
-                                            href="#ttfeatured-main" id="featured-tab">
-                                            <div class="tab-title">Featured</div>
-                                        </a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ttnew-main"
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#ttnew-main"
                                             id="new-tab">
                                             <div class="tab-title">Latest</div>
+                                        </a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ttfeatured-main"
+                                            id="featured-tab">
+                                            <div class="tab-title">Featured</div>
                                         </a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ttbestseller-main"
                                             id="bestseller-tab">
@@ -99,356 +99,7 @@
                                 </ul>
                             </div>
 
-                            <!--First row-->
-
                             <div class="main-content w-100 float-left">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="content-wrapper filter-toggle col-xl-12 col-lg-12 order-lg-2">
-
-                                            {{-- <div class="filter-toggle-main w-100 float-left">
-                                                <div class="sidebar-filter-toggle left-sidebar w-100 float-left">
-
-                                                    <div id="sidebar-main" class="sidebar-main">
-
-                                                        <div class="sidebar-block price col-sm-4 float-left">
-                                                            <h3 class="widget-title"><a data-toggle="collapse"
-                                                                    href="#price" role="button" aria-expanded="true"
-                                                                    aria-controls="price">Price</a></h3>
-                                                            <div id="price" class="collapse show">
-                                                                <div class="price-inner">
-                                                                    <label for="amount">Price range:</label>
-                                                                    <input type="text" id="amount" readonly
-                                                                        style="border:0; font-weight:bold; background:none;">
-                                                                    <div id="slider-range"></div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="sidebar-block color col-sm-4 float-left">
-                                                            <h3 class="widget-title"><a data-toggle="collapse"
-                                                                    href="#color" role="button" aria-expanded="true"
-                                                                    aria-controls="color">Color</a></h3>
-                                                            <div id="color"
-                                                                class="sidebar-widget-option-wrapper collapse show">
-                                                                <div class="color-inner">
-                                                                    <div class="sidebar-widget-option">
-                                                                        <a href="#"
-                                                                            style="background-color: #000000;"></a>
-                                                                        Black <span>(4)</span>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <a href="#"
-                                                                            style="background-color: #11426b;"></a>
-                                                                        Blue <span>(3)</span>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <a href="#"
-                                                                            style="background-color: #7d5a3c;"></a>
-                                                                        Brown <span>(3)</span>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <a href="#"
-                                                                            style="background-color: #ffffff;"></a>
-                                                                        White <span>(3)</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sidebar-block size col-sm-4 float-left">
-                                                            <h3 class="widget-title"><a data-toggle="collapse"
-                                                                    href="#size" role="button" aria-expanded="true"
-                                                                    aria-controls="size">Size</a></h3>
-                                                            <div id="size"
-                                                                class="sidebar-widget-option-wrapper collapse show">
-                                                                <div class="size-inner">
-                                                                    <div class="sidebar-widget-option">
-                                                                        <input type="checkbox" id="size-1">
-                                                                        <label for="size-1">L <span>(4)</span></label>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <input type="checkbox" id="size-2">
-                                                                        <label for="size-2">XS <span>(3)</span></label>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <input type="checkbox" id="size-3">
-                                                                        <label for="size-3">S <span>(3)</span></label>
-                                                                    </div>
-                                                                    <div class="sidebar-widget-option">
-                                                                        <input type="checkbox" id="size-4">
-                                                                        <label for="size-4">Xl <span>(3)</span></label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-
-                                            <div class="tab-content text-center products w-100 float-left">
-                                                <div class="tab-pane grid fade active" id="grid" role="tabpanel">
-                                                    <div class="row">
-                                                        <div class="product-layouts col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                                            <div class="product-thumb">
-                                                                <div class="image zoom">
-                                                                    <a href="product-details.html">
-                                                                        <img src="{{ asset('assets/img/products/pro1.jpeg') }}"
-                                                                            alt="01" />
-                                                                        <img src="{{ asset('assets/img/products/pro1.jpeg') }}"
-                                                                            alt="02"
-                                                                            class="second_image img-responsive" /> </a>
-                                                                </div>
-                                                                <div class="thumb-description">
-                                                                    <div class="caption">
-                                                                        <h4 class="product-title text-capitalize"><a
-                                                                                href="product-details.html">aliquam quaerat
-                                                                                voluptatem</a></h4>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div
-                                                                            class="product-ratings d-inline-block align-middle">
-                                                                            <span class="fa fa-stack"><i
-                                                                                    class="material-icons">star</i></span>
-                                                                            <span class="fa fa-stack"><i
-                                                                                    class="material-icons">star</i></span>
-                                                                            <span class="fa fa-stack"><i
-                                                                                    class="material-icons">star</i></span>
-                                                                            <span class="fa fa-stack"><i
-                                                                                    class="material-icons off">star</i></span>
-                                                                            <span class="fa fa-stack"><i
-                                                                                    class="material-icons off">star</i></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="price">
-                                                                        <div class="regular-price">$100.00</div>
-                                                                        <div class="old-price">$150.00</div>
-                                                                    </div>
-                                                                    <div class="button-wrapper">
-                                                                        <div class="button-group text-center">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-cart"
-                                                                                data-target="#cart-pop"
-                                                                                data-toggle="modal"><i
-                                                                                    class="material-icons">shopping_cart</i><span>Out
-                                                                                    of stock</span></button>
-                                                                            <a href="wishlist.html"
-                                                                                class="btn btn-primary btn-wishlist"><i
-                                                                                    class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-compare"><i
-                                                                                    class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-quickview"
-                                                                                data-toggle="modal"
-                                                                                data-target="#product_view"><i
-                                                                                    class="material-icons">visibility</i><span>Quick
-                                                                                    View</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="tab-pane fade list text-left" id="list" role="tabpanel">
-                                                    <div class="product-layouts col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <div class="product-thumb row">
-                                                            <div class="image zoom col-xs-12 col-sm-5 col-md-4">
-                                                                <a href="product-details.html"
-                                                                    class="d-block position-relative">
-                                                                    <img src="{{ asset('assets/img/products/01.jpg') }}"
-                                                                        alt="01" />
-                                                                    <img src="{{ asset('assets/img/products/02.jpg') }}"
-                                                                        alt="02"
-                                                                        class="second_image img-responsive" />
-                                                                </a>
-                                                            </div>
-                                                            <div
-                                                                class="thumb-description col-xs-12 col-sm-7 col-md-8 position-static text-left">
-                                                                <div class="caption">
-                                                                    <h4 class="product-title text-capitalize"><a
-                                                                            href="product-details.html">aliquam quaerat
-                                                                            voluptatem</a></h4>
-                                                                </div>
-                                                                <div class="rating mb-10">
-                                                                    <div
-                                                                        class="product-ratings d-inline-block align-middle">
-                                                                        <span class="fa fa-stack"><i
-                                                                                class="material-icons">star</i></span>
-                                                                        <span class="fa fa-stack"><i
-                                                                                class="material-icons">star</i></span>
-                                                                        <span class="fa fa-stack"><i
-                                                                                class="material-icons">star</i></span>
-                                                                        <span class="fa fa-stack"><i
-                                                                                class="material-icons off">star</i></span>
-                                                                        <span class="fa fa-stack"><i
-                                                                                class="material-icons off">star</i></span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="description">
-                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                                    Proin rhoncus arcu turpis, quis sagittis orci dictum
-                                                                    non. Etiam id eleifend erat. Donec sit amet nisl id nisi
-                                                                    laoreet viverra in ac nibh. </div>
-
-                                                                <div class="price">
-                                                                    <div class="regular-price">$100.00</div>
-                                                                    <div class="old-price">$150.00</div>
-                                                                </div>
-                                                                <div
-                                                                    class="color-option d-flex align-items-center float-left w-100">
-                                                                    <ul class="color-categories">
-                                                                        <li>
-                                                                            <a class="tt-pink" href="#"
-                                                                                title="Pink"></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="tt-blue" href="#"
-                                                                                title="Blue"></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="tt-yellow" href="#"
-                                                                                title="Yellow"></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="button-wrapper">
-                                                                    <div class="button-group text-center">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary btn-cart"
-                                                                            data-target="#cart-pop" data-toggle="modal"
-                                                                            disabled="disabled"><i
-                                                                                class="material-icons">shopping_cart</i><span>out
-                                                                                of stock</span></button>
-                                                                        <a href="wishlist.html"
-                                                                            class="btn btn-primary btn-wishlist"><i
-                                                                                class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary btn-compare"><i
-                                                                                class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary btn-quickview"
-                                                                            data-toggle="modal"
-                                                                            data-target="#product_view"><i
-                                                                                class="material-icons">visibility</i><span>Quick
-                                                                                View</span></button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade sort text-left" id="sort-view"
-                                                        role="tabpanel">
-                                                        <div class="product-layouts">
-                                                            <div class="product-thumb row">
-                                                                <div class="image zoom col-xs-12 col-sm-3 col-md-2">
-                                                                    <a href="product-details.html"
-                                                                        class="d-block position-relative">
-                                                                        <img src="{{ asset('assets/img/products/01.jpg') }}"
-                                                                            alt="01" />
-                                                                        <img src="{{ asset('assets/img/products/02.jpg') }}"
-                                                                            alt="02"
-                                                                            class="second_image img-responsive" />
-                                                                    </a>
-
-                                                                </div>
-                                                                <div
-                                                                    class="thumb-description col-xs-12 col-sm-9 col-md-10 position-static text-left">
-                                                                    <div class="sort-title col-md-5 col-sm-7 float-left">
-                                                                        <div class="caption">
-                                                                            <h4 class="product-title text-capitalize"><a
-                                                                                    href="product-details.html">aliquam
-                                                                                    quaerat voluptatem</a></h4>
-                                                                        </div>
-
-                                                                        <div class="rating mb-10">
-                                                                            <div
-                                                                                class="product-ratings d-inline-block align-middle">
-                                                                                <span class="fa fa-stack"><i
-                                                                                        class="material-icons">star</i></span>
-                                                                                <span class="fa fa-stack"><i
-                                                                                        class="material-icons">star</i></span>
-                                                                                <span class="fa fa-stack"><i
-                                                                                        class="material-icons">star</i></span>
-                                                                                <span class="fa fa-stack"><i
-                                                                                        class="material-icons off">star</i></span>
-                                                                                <span class="fa fa-stack"><i
-                                                                                        class="material-icons off">star</i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="description mb-10">
-                                                                            Lorem ipsum dolor sit amet, consectetur
-                                                                            adipiscing
-                                                                            elit. Proin rhoncus arcu turpis, quis sagittis
-                                                                            orci
-                                                                            dictum non. Etiam id eleifend erat. Donec sit
-                                                                            amet
-                                                                            nisl id nisi laoreet viverra in ac nibh. </div>
-                                                                        <div
-                                                                            class="color-option d-flex align-items-center float-left w-100">
-                                                                            <ul class="color-categories">
-                                                                                <li>
-                                                                                    <a class="tt-pink" href="#"
-                                                                                        title="Pink"></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a class="tt-blue" href="#"
-                                                                                        title="Blue"></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a class="tt-yellow" href="#"
-                                                                                        title="Yellow"></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="price-main col-md-3 col-sm-5 float-left text-center text-sm-center text-xs-left">
-                                                                        <div class="price">
-                                                                            <div class="regular-price">$100.00</div>
-                                                                            <div class="old-price">$150.00</div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="button-wrapper col-md-4 col-sm-5 float-left text-center text-md-center text-sm-center text-xs-left">
-                                                                        <div class="button-group text-center">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-cart"
-                                                                                data-target="#cart-pop"
-                                                                                data-toggle="modal" disabled="disabled"><i
-                                                                                    class="material-icons">shopping_cart</i><span>out
-                                                                                    of stock</span></button>
-                                                                            <a href="wishlist.html"
-                                                                                class="btn btn-primary btn-wishlist"><i
-                                                                                    class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-compare"><i
-                                                                                    class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-quickview"
-                                                                                data-toggle="modal"
-                                                                                data-target="#product_view"><i
-                                                                                    class="material-icons">visibility</i><span>Quick
-                                                                                    View</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End first row-->
-
                                 <!-- Featured -->
                                 <div class="tab-pane active float-left w-100" id="ttfeatured-main" role="tabpanel"
                                     aria-labelledby="featured-tab">
@@ -520,63 +171,81 @@
                                     aria-labelledby="new-tab">
                                     <section id="ttnew" class="ttnew-products">
                                         <div class="ttnew-content products grid owl-carousel" id="owl2">
-                                            <div class="product-layouts">
-                                                <div class="product-thumb">
-                                                    <div class="image zoom">
-                                                        <a href="product-details.html">
-                                                            <img src="{{ asset('assets/img/products/01.jpg') }}"
-                                                                alt="01" height="501" width="385" />
-                                                            <img src="{{ asset('assets/img/products/02.jpg') }}"
-                                                                alt="02" class="second_image img-responsive"
-                                                                height="501" width="385" /> </a>
-                                                    </div>
-                                                    <div class="thumb-description">
-                                                        <div class="caption">
-                                                            <h4 class="product-title text-capitalize"><a
-                                                                    href="product-details.html">Printed Dugaree with
-                                                                    T-Shirt</a></h4>
+                                            @foreach ($latest_products as $product)
+                                                <div class="product-layouts">
+                                                    <div class="product-thumb">
+                                                        <div class="image zoom">
+                                                            <a href="product-details.html">
+
+                                                                <?php $images = json_decode($product->product_images); ?>
+
+                                                                <?php
+                                                                
+                                                                $firstImage = isset($images[0]) ? $images[0] : null;
+                                                                $secondImage = isset($images[1]) ? $images[1] : null;
+                                                                ?>
+
+                                                                @if ($firstImage)
+                                                                    <img src="{{ Voyager::image($firstImage) }}"
+                                                                        alt="01" height="501" width="385" />
+                                                                @endif
+
+                                                                @if ($secondImage)
+                                                                    <img src="{{ Voyager::image($secondImage) }}"
+                                                                        alt="02" class="second_image img-responsive"
+                                                                        height="501" width="385" />
+                                                                @endif
+                                                            </a>
                                                         </div>
-                                                        <div class="rating">
-                                                            <div class="product-ratings d-inline-block align-middle">
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
+                                                        <div class="thumb-description">
+                                                            <div class="caption">
+                                                                <h4 class="product-title text-capitalize"><a
+                                                                        href="product-details.html">{{ $product->product_name }}</a>
+                                                                </h4>
                                                             </div>
-                                                        </div>
-                                                        <div class="price">
-                                                            <div class="regular-price">$100.00</div>
-                                                            <div class="old-price">$150.00</div>
-                                                        </div>
-                                                        <div class="button-wrapper">
-                                                            <div class="button-group text-center">
-                                                                <button type="button" class="btn btn-primary btn-cart"
-                                                                    data-target="#cart-pop" data-toggle="modal"
-                                                                    disabled="disabled"><i
-                                                                        class="material-icons">shopping_cart</i><span>Add
-                                                                        to cart</span></button>
-                                                                <a href="wishlist.html"
-                                                                    class="btn btn-primary btn-wishlist"><i
-                                                                        class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-compare"><i
-                                                                        class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-quickview"
-                                                                    data-toggle="modal" data-target="#product_view"><i
-                                                                        class="material-icons">visibility</i><span>Quick
-                                                                        View</span></button>
+                                                            <div class="rating">
+                                                                <?php $rating = $product->product_star_rating; ?>
+
+                                                                <div class="product-ratings d-inline-block align-middle">
+                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                        <span class="fa fa-stack">
+                                                                            <i class="material-icons">
+                                                                                @if ($i <= $rating)
+                                                                                    star
+                                                                                @else
+                                                                                    star_outline
+                                                                                @endif
+                                                                            </i>
+                                                                        </span>
+                                                                    @endfor
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="price">
+                                                                <div class="regular-price">${{ $product->product_price }}
+                                                                </div>
+                                                                <div class="old-price">${{ $product->product_cut_price }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="button-wrapper">
+                                                                <div class="button-group text-center">
+                                                                    <button type="button"
+                                                                        class="btn btn-primary btn-cart"
+                                                                        data-target="#cart-pop" data-toggle="modal"><i
+                                                                            class="material-icons">shopping_cart</i><span>Add
+                                                                            to cart</span></button>
+
+                                                                    <button type="button"
+                                                                        class="btn btn-primary btn-quickview"
+                                                                        data-toggle="modal" data-target="#product_view"><i
+                                                                            class="material-icons">visibility</i><span>Quick
+                                                                            View</span></button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </section>
                                 </div>

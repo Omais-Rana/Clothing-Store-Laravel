@@ -192,73 +192,44 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-xl-4 sub-menu mb-xl-0 mb-4">
                                                     <!-- <h6 class="sub-title text-uppercase font-weight-bold white-text">Variation 1</h6> -->
-
                                                     <ul class="list-unstyled">
+                                                        @php
+                                                            $categories = \App\Models\Category::orderBy(
+                                                                'created_at',
+                                                                'asc',
+                                                            )->get();
+                                                        @endphp
+                                                        @if (count($categories) > 0)
 
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                COATS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                GILETS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                HOODIE </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                JACKETS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BLOUSES</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0"
-                                                                href="category.html">CARDIGANS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">DRESSES</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BOTTOMS</a>
-                                                        </li>
-
-
+                                                            @foreach ($categories as $category)
+                                                                @if ($category->category_column == 0)
+                                                                    <li>
+                                                                        <a class="menu-item pl-0"
+                                                                            href="{{ route('category.by_category', $category->slug) }}">
+                                                                            {{ $category->category_name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
+                                                            @endforeach
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-6 col-xl-4 sub-menu mb-md-0 mb-4">
                                                     <!-- <h6 class="sub-title text-uppercase font-weight-bold white-text">Variation 2</h6> -->
                                                     <ul class="list-unstyled">
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                CO-ORDS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                LOCENGE WEAR </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                SKIRTS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">LEGGINS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BASISC</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BLAZERS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0"
-                                                                href="category.html">JUMPSUITS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">TOPS</a>
-                                                        </li>
+                                                        @foreach ($categories as $category)
+                                                            @if ($category->category_column != 0)
+                                                                <li>
+                                                                    <a class="menu-item pl-0"
+                                                                        href="{{ route('category.by_category', $category->slug) }}">
+                                                                        {{ $category->category_name }}
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <p>No categories found.</p>
+                                                        @endif
+
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-6 col-xl-4 sub-menu mb-0">
