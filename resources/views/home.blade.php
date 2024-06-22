@@ -75,103 +75,20 @@
             </div>
             <!-- End 2 banners -->
 
-            <!-- Products and Testimonials -->
+            <!-- Featured and Testimonials -->
             <div id="main">
-                <!-- Products sections -->
+                <!-- featured products sections -->
                 <div id="hometab" class="home-tab my-40 my-sm-25 bottom-to-top hb-animate-element">
                     <div class="container">
                         <div class="row">
                             <div class="tt-title d-inline-block float-none w-100 text-center">Trending Products</div>
-                            <div class="tabs">
-                                <ul class="nav nav-tabs justify-content-center">
-                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#ttnew-main"
-                                            id="new-tab">
-                                            <div class="tab-title">Latest</div>
-                                        </a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ttfeatured-main"
-                                            id="featured-tab">
-                                            <div class="tab-title">Featured</div>
-                                        </a></li>
-                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ttbestseller-main"
-                                            id="bestseller-tab">
-                                            <div class="tab-title">Bestseller</div>
-                                        </a></li>
-                                </ul>
-                            </div>
 
                             <div class="main-content w-100 float-left">
-                                <!-- Featured -->
-                                <div class="tab-pane active float-left w-100" id="ttfeatured-main" role="tabpanel"
-                                    aria-labelledby="featured-tab">
-                                    <section id="ttfeatured" class="ttfeatured-products">
-                                        <div class="ttfeatured-content products grid owl-carousel" id="owl1">
-                                            <div class="product-layouts">
-                                                <div class="product-thumb">
-                                                    <div class="image zoom">
-                                                        <a href="product-details.html">
-                                                            <img src="{{ asset('assets/img/products/01.jpg') }}"
-                                                                alt="01" height="501" width="385" />
-                                                            <img src="{{ asset('assets/img/products/02.jpg') }}"
-                                                                alt="02" class="second_image img-responsive"
-                                                                height="501" width="385" /> </a>
-                                                    </div>
-                                                    <div class="thumb-description">
-                                                        <div class="caption">
-                                                            <h4 class="product-title text-capitalize"><a
-                                                                    href="product-details.html">Merino Small Dress</a></h4>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <div class="product-ratings d-inline-block align-middle">
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="price">
-                                                            <div class="regular-price">$100.00</div>
-                                                            <div class="old-price">$150.00</div>
-                                                        </div>
-                                                        <div class="button-wrapper">
-                                                            <div class="button-group text-center">
-                                                                <button type="button" class="btn btn-primary btn-cart"
-                                                                    data-target="#cart-pop" data-toggle="modal"
-                                                                    disabled="disabled"><i
-                                                                        class="material-icons">shopping_cart</i><span>Add
-                                                                        to cart</span></button>
-                                                                <a href="wishlist.html"
-                                                                    class="btn btn-primary btn-wishlist"><i
-                                                                        class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-compare"><i
-                                                                        class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-quickview"
-                                                                    data-toggle="modal" data-target="#product_view"><i
-                                                                        class="material-icons">visibility</i><span>Quick
-                                                                        View</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!-- End featured -->
-
-                                <!-- New -->
-                                <div class="tab-pane float-left w-100" id="ttnew-main" role="tabpanel"
-                                    aria-labelledby="new-tab">
+                                <!-- products -->
+                                <div class="float-left w-100" id="ttnew-main" role="tabpanel" aria-labelledby="new-tab">
                                     <section id="ttnew" class="ttnew-products">
-                                        <div class="ttnew-content products grid owl-carousel" id="owl2">
-                                            @foreach ($latest_products as $product)
+                                        <div class="ttnew-content products grid owl-carousel" id="owl1">
+                                            @foreach ($featured as $product)
                                                 <div class="product-layouts">
                                                     <div class="product-thumb">
                                                         <div class="image zoom">
@@ -229,8 +146,8 @@
                                                             </div>
                                                             <div class="button-wrapper">
                                                                 <div class="button-group text-center">
-                                                                    <button type="button"
-                                                                        class="btn btn-primary btn-cart"
+                                                                    <button type="button" class="btn btn-primary btn-cart"
+                                                                        <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
                                                                         data-target="#cart-pop" data-toggle="modal"><i
                                                                             class="material-icons">shopping_cart</i><span>Add
                                                                             to cart</span></button>
@@ -249,80 +166,13 @@
                                         </div>
                                     </section>
                                 </div>
-                                <!-- End new -->
+                                <!-- end products -->
 
-                                <!-- Bestseller -->
-                                <div class="tab-pane float-left w-100" id="ttbestseller-main" role="tabpanel"
-                                    aria-labelledby="bestseller-tab">
-                                    <section id="ttbestseller" class="ttbestseller-products">
-                                        <div class="ttbestseller-content products grid owl-carousel" id="owl3">
-                                            <div class="product-layouts">
-                                                <div class="product-thumb">
-                                                    <div class="image zoom">
-                                                        <a href="product-details.html">
-                                                            <img src="{{ asset('assets/img/products/01.jpg') }}"
-                                                                alt="01" height="501" width="385" />
-                                                            <img src="{{ asset('assets/img/products/02.jpg') }}"
-                                                                alt="02" class="second_image img-responsive"
-                                                                height="501" width="385" /> </a>
-                                                    </div>
-                                                    <div class="thumb-description">
-                                                        <div class="caption">
-                                                            <h4 class="product-title text-capitalize"><a
-                                                                    href="product-details.html">Slim-fit Leaf-Print Linen
-                                                                    Shirt</a></h4>
-                                                        </div>
-
-                                                        <div class="rating">
-                                                            <div class="product-ratings d-inline-block align-middle">
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
-                                                                <span class="fa fa-stack"><i
-                                                                        class="material-icons off">star</i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="price">
-                                                            <div class="regular-price">$100.00</div>
-                                                            <div class="old-price">$150.00</div>
-                                                        </div>
-                                                        <div class="button-wrapper">
-                                                            <div class="button-group text-center">
-                                                                <button type="button" class="btn btn-primary btn-cart"
-                                                                    data-toggle="modal" data-target="#product_view"
-                                                                    disabled="disabled"><i
-                                                                        class="material-icons">shopping_cart</i><span>Add
-                                                                        to cart</span></button>
-                                                                <a href="wishlist.html"
-                                                                    class="btn btn-primary btn-wishlist"><i
-                                                                        class="material-icons">favorite</i><span>wishlist</span></a>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-compare"><i
-                                                                        class="material-icons">equalizer</i><span>Compare</span></button>
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-quickview"
-                                                                    data-toggle="modal" data-target="#product_view"><i
-                                                                        class="material-icons">visibility</i><span>Quick
-                                                                        View</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <!-- End bestseller -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Products -->
+                <!-- End featured products roducts -->
 
                 <!-- Testimonials section-->
                 <div id="ttcmstestimonial" class="my-40 my-sm-25 bottom-to-top hb-animate-element">
@@ -436,58 +286,80 @@
                         <div class="row">
                             <div class="tt-title d-inline-block float-none w-100 text-center">special products</div>
                             <div class="ttspecial-content products grid owl-carousel">
-                                <div class="product-layouts">
-                                    <div class="product-thumb">
-                                        <div class="image zoom">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/img/products/01.jpg') }}" alt="01"
-                                                    height="501" width="385" />
-                                                <img src="{{ asset('assets/img/products/02.jpg') }}" alt="02"
-                                                    class="second_image img-responsive" height="501" width="385" />
-                                            </a>
-                                        </div>
-                                        <div class="thumb-description">
-                                            <div class="caption">
-                                                <h4 class="product-title text-capitalize"><a
-                                                        href="product-details.html">Checked
-                                                        Polo Collar T-shirt</a>
-                                                </h4>
+                                @foreach ($special as $product)
+                                    <div class="product-layouts">
+                                        <div class="product-thumb">
+                                            <div class="image zoom">
+                                                <a href="product-details.html">
+
+                                                    <?php $images = json_decode($product->product_images); ?>
+
+                                                    <?php
+                                                    
+                                                    $firstImage = isset($images[0]) ? $images[0] : null;
+                                                    $secondImage = isset($images[1]) ? $images[1] : null;
+                                                    ?>
+
+                                                    @if ($firstImage)
+                                                        <img src="{{ Voyager::image($firstImage) }}" alt="01"
+                                                            height="501" width="385" />
+                                                    @endif
+
+                                                    @if ($secondImage)
+                                                        <img src="{{ Voyager::image($secondImage) }}" alt="02"
+                                                            class="second_image img-responsive" height="501"
+                                                            width="385" />
+                                                    @endif
+                                                </a>
                                             </div>
-                                            <div class="rating">
-                                                <div class="product-ratings d-inline-block align-middle">
-                                                    <span class="fa fa-stack"><i class="material-icons">star</i></span>
-                                                    <span class="fa fa-stack"><i class="material-icons">star</i></span>
-                                                    <span class="fa fa-stack"><i class="material-icons">star</i></span>
-                                                    <span class="fa fa-stack"><i
-                                                            class="material-icons off">star</i></span>
-                                                    <span class="fa fa-stack"><i
-                                                            class="material-icons off">star</i></span>
+                                            <div class="thumb-description">
+                                                <div class="caption">
+                                                    <h4 class="product-title text-capitalize"><a
+                                                            href="product-details.html">{{ $product->product_name }}</a>
+                                                    </h4>
                                                 </div>
-                                            </div>
-                                            <div class="price">
-                                                <div class="regular-price">$100.00</div>
-                                                <div class="old-price">$150.00</div>
-                                            </div>
-                                            <div class="button-wrapper">
-                                                <div class="button-group text-center">
-                                                    <button type="button" class="btn btn-primary btn-cart"
-                                                        data-toggle="modal" data-target="#product_view"
-                                                        disabled="disabled"><i
-                                                            class="material-icons">shopping_cart</i><span>Add to
-                                                            cart</span></button>
-                                                    <a href="wishlist.html" class="btn btn-primary btn-wishlist"><i
-                                                            class="material-icons">favorite</i><span>wishlist</span></a>
-                                                    <button type="button" class="btn btn-primary btn-compare"><i
-                                                            class="material-icons">equalizer</i><span>Compare</span></button>
-                                                    <button type="button" class="btn btn-primary btn-quickview"
-                                                        data-toggle="modal" data-target="#product_view"><i
-                                                            class="material-icons">visibility</i><span>Quick
-                                                            View</span></button>
+                                                <div class="rating">
+                                                    <?php $rating = $product->product_star_rating; ?>
+
+                                                    <div class="product-ratings d-inline-block align-middle">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <span class="fa fa-stack">
+                                                                <i class="material-icons">
+                                                                    @if ($i <= $rating)
+                                                                        star
+                                                                    @else
+                                                                        star_outline
+                                                                    @endif
+                                                                </i>
+                                                            </span>
+                                                        @endfor
+                                                    </div>
+
+                                                </div>
+                                                <div class="price">
+                                                    <div class="regular-price">${{ $product->product_price }}
+                                                    </div>
+                                                    <div class="old-price">${{ $product->product_cut_price }}
+                                                    </div>
+                                                </div>
+                                                <div class="button-wrapper">
+                                                    <div class="button-group text-center">
+                                                        <button type="button" class="btn btn-primary btn-cart"
+                                                            <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
+                                                            data-target="#cart-pop" data-toggle="modal"><i
+                                                                class="material-icons">shopping_cart</i><span>Add
+                                                                to cart</span></button>
+
+                                                        <button type="button" class="btn btn-primary btn-quickview"
+                                                            data-toggle="modal" data-target="#product_view"><i
+                                                                class="material-icons">visibility</i><span>Quick
+                                                                View</span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

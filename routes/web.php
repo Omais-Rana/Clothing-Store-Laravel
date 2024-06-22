@@ -16,8 +16,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', function () {
     $banners = Banner::orderBy('created_at', 'desc')->get();
-    $latest_products = Product::orderBy('created_at', 'desc')->take(3)->get(); //latest products
-    return view('home', compact('latest_products', 'banners'));
+    $featured = Product::where('featured', true)->orderBy('created_at', 'desc')->get(); //latest trending
+    $special = Product::where('special', true)->orderBy('created_at', 'desc')->get(); //latest special
+    return view('home', compact('featured', 'special', 'banners'));
 });
 
 // //Show on homepage:

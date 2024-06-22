@@ -536,7 +536,7 @@ $(document).ready(function () {
             "<i class='material-icons'>&#xE5CC;</i>",
         ],
         dots: false,
-        loop: true,
+        loop: false,
         autoplayHoverPause: true,
         autoplay: true,
         responsive: {
@@ -1063,7 +1063,7 @@ function initialize_owl(el) {
             "<i class='material-icons'>&#xE5CC;</i>",
         ],
         dots: false,
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayHoverPause: true,
         responsive: {
