@@ -181,13 +181,12 @@
                                 <!-- Links -->
                                 <ul class="navbar-nav m-auto justify-content-center">
                                     <li class="nav-item dropdown active">
-                                        <a class="nav-link  text-uppercase" href="category.html">
+                                        <a class="nav-link  text-uppercase" href="{{ route('products.new') }}">
                                             NEW IN
                                             <span class="sr-only">(current)</span> </a>
                                     </li>
                                     <li class="nav-item dropdown mega-dropdown">
-                                        <a class="nav-link dropdown-toggle text-uppercase"
-                                            href="category.html">CLOTHING</a>
+                                        <a class="nav-link dropdown-toggle text-uppercase" href="#">CLOTHING</a>
                                         <div class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-3 px-3">
                                             <div class="row">
                                                 <div class="col-md-12 col-xl-4 sub-menu mb-xl-0 mb-4">

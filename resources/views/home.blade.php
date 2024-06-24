@@ -22,7 +22,8 @@
                                     <div class="slider-title mb-20 text-capitalize float-left w-100">WHOLESALE WOMEN
                                         CLOTHING
                                     </div>
-                                    <div class="slider-button text-uppercase float-left w-100"><a href=" #">Shop
+                                    <div class="slider-button text-uppercase float-left w-100"><a
+                                            href="{{ route('products.all') }}">Shop
                                             Now</a></div>
                                 </div>
                             </div>

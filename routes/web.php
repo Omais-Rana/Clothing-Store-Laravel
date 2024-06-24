@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('home', compact('featured', 'special', 'banners'));
 });
 
+
+
 // //Show on homepage:
 // Route::get('/', function () {
 //     $top_categories = Category::where('category_top', true)->orderBy('created_at', 'desc')->get(); //top categories
@@ -32,8 +34,14 @@ Route::get('/', function () {
 //     return view('index', compact('top_categories', 'latest_products', 'bestsellers', 'posts', 'postsLatest', 'banners'));
 // });
 
+// Show New Arrivals 
+Route::get('/new-arrivals', [ProductController::class, 'newProducts'])->name('products.new');
 
+// Show products by category
 Route::get('/category/{category}', [ProductController::class, 'showByCategory'])->name('category.by_category');
+
+// Show all products
+Route::get('/all-items', [ProductController::class, 'allProducts'])->name('products.all');
 
 // Route::get('/products/{slug}', [ProductController::class, 'shopSingle'])->name('shop.single');
 
