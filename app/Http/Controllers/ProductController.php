@@ -72,16 +72,8 @@ class ProductController extends Controller
     public function shopSingle(Request $request)
     {
         $product = Product::whereSlug($request->slug)->firstOrFail();
-        return view('shop-single', compact('product'));
-    }
-
-    public function search(Request $request)
-    {
-        $term = $request->input('term');
-        $products = Product::where('product_name', 'like', '%' . $term . '%')
-            ->orWhere('product_tags', 'like', '%' . $term . '%')
-            ->paginate(12);
-
-        return view('shop-search', compact('products', 'term'));
+        $sizes = json_decode($product->product_size, true) ?? [];
+        $colors = json_decode($product->product_color, true) ?? [];
+        return view('shop-single', compact('product', 'sizes', 'colors'));
     }
 }

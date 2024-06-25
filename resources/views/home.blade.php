@@ -34,8 +34,9 @@
         </div>
         <!-- End Hero section -->
 
-        <!-- 2 banners below Hero -->
+
         <div class="main-content">
+            <!-- 2 banners below Hero -->
             <div id="ttcmsbanner" class="ttcmsbanner my-40 my-sm-25">
                 <div class="ttbannerblock container text-center">
                     <div class="row">
@@ -93,7 +94,7 @@
                                                 <div class="product-layouts">
                                                     <div class="product-thumb">
                                                         <div class="image zoom">
-                                                            <a href="product-details.html">
+                                                            <a href="{{ route('shop.single', $product->slug) }}">
 
                                                                 <?php $images = json_decode($product->product_images); ?>
 
@@ -291,7 +292,7 @@
                                     <div class="product-layouts">
                                         <div class="product-thumb">
                                             <div class="image zoom">
-                                                <a href="product-details.html">
+                                                <a href="{{ route('shop.single', $product->slug) }}">
 
                                                     <?php $images = json_decode($product->product_images); ?>
 

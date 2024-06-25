@@ -77,7 +77,7 @@
                         <div class="header-middle float-lg-left float-md-left float-sm-left float-xs-none">
                             <div class="logo">
                                 <a href="{{ url('/') }}"><img style="margin-top: -14px;"
-                                        src="{{ 'assets/img/logos/logoo.png' }}" alt="logo" width="180"
+                                        src="{{ asset('assets/img/logos/logoo.png') }}" alt="logo" width="180"
                                         height="40" class="logo"></a>
                             </div>
                         </div>
@@ -260,7 +260,8 @@
                                         <a class="nav-link  text-uppercase" href="category.html">ACCESSORIES</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  text-uppercase" href="contact-us.html">CONTACT US</a>
+                                        <a class="nav-link  text-uppercase" href="{{ url('/contact') }}">CONTACT
+                                            US</a>
                                     </li>
 
 
@@ -308,64 +309,43 @@
                                                     <!-- <h6 class="sub-title text-uppercase font-weight-bold white-text">Variation 1</h6> -->
 
                                                     <ul class="list-unstyled">
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                COATS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                GILETS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">HOODIE</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">JACKETS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BLOUSES</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0"
-                                                                href="category.html">CARDIGANS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">DRESSES</a>
-                                                        </li>
+                                                        @php
+                                                            $categories = \App\Models\Category::orderBy(
+                                                                'created_at',
+                                                                'asc',
+                                                            )->get();
+                                                        @endphp
+                                                        @if (count($categories) > 0)
+
+                                                            @foreach ($categories as $category)
+                                                                @if ($category->category_column == 0)
+                                                                    <li>
+                                                                        <a class="menu-item pl-0"
+                                                                            href="{{ route('category.by_category', $category->slug) }}">
+                                                                            {{ $category->category_name }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
+                                                            @endforeach
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-6 col-xl-4 sub-menu mb-md-0 mb-4">
                                                     <!-- <h6 class="sub-title text-uppercase font-weight-bold white-text">Variation 2</h6> -->
                                                     <ul class="list-unstyled">
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                BOTTOMS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                CO-ORDS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">
-                                                                SKIRTS </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0"
-                                                                href="category.html">LEGGINGS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BASICS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">BALZERS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0"
-                                                                href="category.html">JUMPSUITS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="menu-item pl-0" href="category.html">TOPS</a>
-                                                        </li>
+                                                        @foreach ($categories as $category)
+                                                            @if ($category->category_column != 0)
+                                                                <li>
+                                                                    <a class="menu-item pl-0"
+                                                                        href="{{ route('category.by_category', $category->slug) }}">
+                                                                        {{ $category->category_name }}
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        <p>No categories found.</p>
+                                                        @endif
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -392,7 +372,8 @@
                                     </li>
 
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link text-uppercase" href="contact-us.html">CONTACT US</a>
+                                        <a class="nav-link text-uppercase" href="{{ url('/contact') }}">CONTACT
+                                            US</a>
                                     </li>
                                 </ul>
                                 <!-- Links -->
@@ -437,8 +418,8 @@
             <div class="row">
                 <div class="col-md-2 footer-cms footer-column">
                     <div class="ttcmsfooter">
-                        <div class="footer-logo"><img src="img/logos/logowhite.png" alt="footer-logo" width="200"
-                                height="50"></div>
+                        <div class="footer-logo"><img src="{{ asset('assets/img/logos/logowhite.png') }}"
+                                alt="footer-logo" width="200" height="50"></div>
                         <div class="footer-desc">A fashion brand for men and women. Top quality products.</div>
                     </div>
                 </div>

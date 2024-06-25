@@ -28,7 +28,7 @@
                                         <div class="product-layouts col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                             <div class="product-thumb">
                                                 <div class="image zoom">
-                                                    <a href="product-details.html">
+                                                    <a href="{{ route('shop.single', $product->slug) }}">
 
                                                         <?php $images = json_decode($product->product_images); ?>
 
