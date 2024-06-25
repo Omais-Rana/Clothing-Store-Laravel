@@ -76,10 +76,11 @@
                             </div>
                             <div class="product-variants float-left w-100">
                                 {{-- Size --}}
+
                                 <div class="col-md-3 col-sm-6 col-xs-12 size-options d-flex align-items-center">
                                     <h5>Size:</h5>
                                     <select class="form-control" name="size">
-                                        <option value="" selected disabled>Size</option>
+                                        <option value="" selected disabled>Color</option>
                                         @foreach ($sizes as $size)
                                             <option value="{{ $size }}">{{ $size }}</option>
                                         @endforeach

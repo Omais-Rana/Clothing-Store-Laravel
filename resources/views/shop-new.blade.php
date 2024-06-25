@@ -53,7 +53,7 @@
                                                 <div class="thumb-description">
                                                     <div class="caption">
                                                         <h4 class="product-title text-capitalize"><a
-                                                                href="product-details.html">{{ $product->product_name }}</a>
+                                                                href="{{ route('shop.single', $product->slug) }}">{{ $product->product_name }}</a>
                                                         </h4>
                                                     </div>
                                                     <div class="rating">

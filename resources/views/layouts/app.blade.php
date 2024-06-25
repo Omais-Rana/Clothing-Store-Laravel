@@ -425,45 +425,40 @@
                 </div>
                 <div class="col-md-2 footer-column">
                     <div class="title">
+                        <a href="#products" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
+                            aria-expanded="false">Company</a>
+                    </div>
+                    <ul id="products" class="list-unstyled collapse">
+                        <li>
+                            <a href="{{ url('/') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/about') }}">about us</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/contact') }}">contact us</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-2 footer-column">
+                    <div class="title">
                         <a href="#company" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
-                            aria-expanded="false">company</a>
+                            aria-expanded="false">Products</a>
                     </div>
                     <ul id="company" class="list-unstyled collapse">
                         <li>
                             <a href="#">search</a>
                         </li>
                         <li>
-                            <a href="#">New Products</a>
+                            <a href="{{ route('products.new') }}">New Products</a>
                         </li>
                         <li>
-                            <a href="category.html">Best Collection</a>
-                        </li>
-                        <li>
-                            <a href="wishlist.html">wishlist</a>
+                            <a href="{{ route('products.all') }}">All Collection</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-2 footer-column">
-                    <div class="title">
-                        <a href="#products" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
-                            aria-expanded="false">products</a>
-                    </div>
-                    <ul id="products" class="list-unstyled collapse">
-                        <li>
-                            <a href="blog-details.html">blog</a>
-                        </li>
-                        <li>
-                            <a href="about-us.html">about us</a>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">contact us</a>
-                        </li>
-                        <li>
-                            <a href="my-account.html">my account</a>
-                        </li>
-                    </ul>
 
-                </div>
                 <div class="col-md-2 footer-column">
                     <div class="title">
                         <a href="#account" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
@@ -478,9 +473,6 @@
                         </li>
                         <li>
                             <a href="contact-us.html">addresses</a>
-                        </li>
-                        <li>
-                            <a href="my-account.html">my wishlists</a>
                         </li>
                     </ul>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Banner;
@@ -33,9 +34,9 @@ Route::get('/products/{slug}', [ProductController::class, 'shopSingle'])->name('
 //     return view('about');
 // });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Contact us routes
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 
 // //Carting routes

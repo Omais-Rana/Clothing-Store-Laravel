@@ -41,7 +41,7 @@
                 <div class="ttbannerblock container text-center">
                     <div class="row">
                         <div class="ttbanner1 ttbanner col-sm-6 col-xs-6 left-to-right hb-animate-element">
-                            <div class="ttbanner-img"><a href="#"><img
+                            <div class="ttbanner-img"><a href="{{ route('products.all') }}"><img
                                         src="{{ asset('assets/img/banner/cms-01.jpg') }}" alt="cms-01" height="600"
                                         width="630"></a></div>
                             <div class="ttbanner-inner d-inline-block align-top float-none">
@@ -51,13 +51,13 @@
                                     <span class="subtitle float-left w-100 py-20"> We specialise in supplying the latest
                                         fresh catwalk trends to a wide range of retail businesses and boutiques. With over
                                         20 years of experience in women’s wholesale boutique clothing</span>
-                                    <span class="shop-now float-left w-100"><a href="#"
+                                    <span class="shop-now float-left w-100"><a href="{{ route('products.all') }}"
                                             class="d-inline-block align-top float-none btn-primary">Shop Now</a></span>
                                 </div>
                             </div>
                         </div>
                         <div class="ttbanner2 ttbanner col-sm-6 col-xs-6 right-to-left hb-animate-element">
-                            <div class="ttbanner-img"><a href="#"><img
+                            <div class="ttbanner-img"><a href="{{ route('products.all') }}"><img
                                         src="{{ asset('assets/img/banner/cms-02.jpg') }}" alt="cms-02" height="600"
                                         width="630"></a></div>
                             <div class="ttbanner-inner d-inline-block align-top float-none">
@@ -67,7 +67,7 @@
                                     <span class="subtitle float-left w-100 py-20">Wholesale women's clothing includes a wide
                                         selection of garments, including dresses, tops, pants, skirts, jackets, and more.
                                         These items may be produced by several brands, designers, or manufacturers.</span>
-                                    <span class="shop-now float-left w-100"><a href="#"
+                                    <span class="shop-now float-left w-100"><a href="{{ route('products.all') }}"
                                             class="d-inline-block align-top float-none btn-primary">Shop Now</a></span>
                                 </div>
                             </div>
