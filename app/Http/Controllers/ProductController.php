@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use TCG\Voyager\Facades\Voyager;
 
 class ProductController extends Controller
 {
 
     public function newProducts(Request $request)
     {
-        $newProducts = Product::where('created_at', '>=', now()->subDays(15))->get();
+        $newProducts = Product::where('created_at', '>=', now()->subDays(15))
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         $productCount = Product::where('created_at', '>=', now()->subDays(15))->count();
 
         return view('shop-new', compact('newProducts', 'productCount'));
