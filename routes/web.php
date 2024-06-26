@@ -24,6 +24,9 @@ Route::get('/new-arrivals', [ProductController::class, 'newProducts'])->name('pr
 // Show products by category
 Route::get('/category/{category}', [ProductController::class, 'showByCategory'])->name('category.by_category');
 
+//For extra categories e.g. Italy, Summer, Accessories etc
+Route::get('/shop-more', [ProductController::class, 'showMore'])->name('shop.more');
+
 // Show all products
 Route::get('/all-items', [ProductController::class, 'allProducts'])->name('products.all');
 

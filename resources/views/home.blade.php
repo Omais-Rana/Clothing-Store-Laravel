@@ -119,7 +119,7 @@
                                                         <div class="thumb-description">
                                                             <div class="caption">
                                                                 <h4 class="product-title text-capitalize"><a
-                                                                        href="product-details.html">{{ $product->product_name }}</a>
+                                                                        href="{{ route('shop.single', $product->slug) }}">{{ $product->product_name }}</a>
                                                                 </h4>
                                                             </div>
                                                             <div class="rating">
@@ -143,8 +143,10 @@
                                                             <div class="price">
                                                                 <div class="regular-price">${{ $product->product_price }}
                                                                 </div>
-                                                                <div class="old-price">${{ $product->product_cut_price }}
-                                                                </div>
+                                                                @isset($product->product_cut_price)
+                                                                    <div class="old-price">${{ $product->product_cut_price }}
+                                                                    </div>
+                                                                @endisset
                                                             </div>
                                                             <div class="button-wrapper">
                                                                 <div class="button-group text-center">
@@ -317,7 +319,7 @@
                                             <div class="thumb-description">
                                                 <div class="caption">
                                                     <h4 class="product-title text-capitalize"><a
-                                                            href="product-details.html">{{ $product->product_name }}</a>
+                                                            href="{{ route('shop.single', $product->slug) }}">{{ $product->product_name }}</a>
                                                     </h4>
                                                 </div>
                                                 <div class="rating">
@@ -341,8 +343,10 @@
                                                 <div class="price">
                                                     <div class="regular-price">${{ $product->product_price }}
                                                     </div>
-                                                    <div class="old-price">${{ $product->product_cut_price }}
-                                                    </div>
+                                                    @isset($product->product_cut_price)
+                                                        <div class="old-price">${{ $product->product_cut_price }}</div>
+                                                    @endisset
+
                                                 </div>
                                                 <div class="button-wrapper">
                                                     <div class="button-group text-center">

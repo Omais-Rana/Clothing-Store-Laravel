@@ -32,7 +32,7 @@
             <div class="header-nav">
                 <div class="container">
                     <div class="nav-left float-left">
-                        <div class="ttheader-service">Wants to explore Upcoming Deals on Weekends?</div>
+                        <div class="ttheader-service">Want to explore Upcoming Deals on Weekends?</div>
                     </div>
                     <div class="nav-right float-right d-flex">
                         <div class="ttheader-mail"><a
@@ -203,7 +203,7 @@
                                                             @foreach ($categories as $category)
                                                                 @if ($category->category_column == 0)
                                                                     <li>
-                                                                        <a class="menu-item pl-0"
+                                                                        <a class="menu-item pl-0 text-uppercase"
                                                                             href="{{ route('category.by_category', $category->slug) }}">
                                                                             {{ $category->category_name }}
                                                                         </a>
@@ -218,7 +218,7 @@
                                                         @foreach ($categories as $category)
                                                             @if ($category->category_column != 0)
                                                                 <li>
-                                                                    <a class="menu-item pl-0"
+                                                                    <a class="menu-item pl-0 text-uppercase"
                                                                         href="{{ route('category.by_category', $category->slug) }}">
                                                                         {{ $category->category_name }}
                                                                     </a>
@@ -246,18 +246,22 @@
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  text-uppercase" href="category.html">
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'italy']) }}">
                                             MADE IN ITALY
                                             <span class="sr-only">(current)</span> </a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  text-uppercase" href="category.html">AUTUMN/WINTER</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'autumn']) }}">AUTUMN/WINTER</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  text-uppercase" href="category.html">SPRING/SUMMER</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'spring']) }}">SPRING/SUMMER</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  text-uppercase" href="category.html">ACCESSORIES</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'accessories']) }}">ACCESSORIES</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link  text-uppercase" href="{{ url('/contact') }}">CONTACT
@@ -320,7 +324,7 @@
                                                             @foreach ($categories as $category)
                                                                 @if ($category->category_column == 0)
                                                                     <li>
-                                                                        <a class="menu-item pl-0"
+                                                                        <a class="menu-item pl-0 text-uppercase"
                                                                             href="{{ route('category.by_category', $category->slug) }}">
                                                                             {{ $category->category_name }}
                                                                         </a>
@@ -335,7 +339,7 @@
                                                         @foreach ($categories as $category)
                                                             @if ($category->category_column != 0)
                                                                 <li>
-                                                                    <a class="menu-item pl-0"
+                                                                    <a class="menu-item pl-0 text-uppercase"
                                                                         href="{{ route('category.by_category', $category->slug) }}">
                                                                         {{ $category->category_name }}
                                                                     </a>

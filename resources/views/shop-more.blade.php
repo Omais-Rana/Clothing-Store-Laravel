@@ -5,26 +5,39 @@
             <ol class="breadcrumb parallax justify-content-center"
                 data-source-url="{{ asset('assets/img/banner/parallax.jpg') }}"
                 style="background-image: url('{{ asset('assets/img/banner/parellex-bg.jpg') }}'); background-position: 50% 0.809717%;">
-                <h1 class="text-center" style="color: whitesmoke">NEW ARRIVALS</h1>
+                <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s" style="color: whitesmoke">
+                    {{ strtoupper($categoryName) }}
+                </h2>
             </ol>
         </nav>
         <div class="main-content w-100 float-left ">
-
             <div class="container m-auto">
-                <header class="product-grid-header d-flex d-xs-block d-sm-flex d-lg-flex w-100 float-left">
-                    <div
-                        class="hidden-sm-down total-products d-flex d-xs-block d-lg-flex col-md-3 col-sm-3 col-xs-12 align-items-center">
-                        <div class="row">
-                            <h6 class="text-center">Showing {{ $productCount }} results</h6>
-                        </div>
-                    </div>
-                </header>
+
                 <div class="row ">
                     <div class="content-wrapper m-auto col-xl-9 col-lg-9 order-lg-2">
+                        <header class="product-grid-header d-flex d-xs-block d-sm-flex d-lg-flex w-100 float-left">
+                            <div
+                                class="hidden-sm-down total-products d-flex d-xs-block d-lg-flex col-md-3 col-sm-3 col-xs-12 align-items-center">
+                                <h6 class="text-center">Showing results</h6>
+                            </div>
+                            {{-- <div
+                                class="shop-results-wrapper d-flex d-sm-flex d-xs-block d-lg-flex justify-content-end col-md-9 col-sm-9 col-xs-12">
+                                <div class="shop-results d-flex align-items-center"><span>Sort By</span>
+                                    <div class="shop-select sort">
+                                        <select name="sortList" id="sortList" onchange="handleSort(this)"
+                                            data-selected-sort="{{ $selectedSort }}">
+                                            <option value="latest">Latest products</option>
+                                            <option value="high_to_low">Price High to Low</option>
+                                            <option value="low_to_high">Price Low to High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> --}}
+                        </header>
                         <div class="tab-content text-center products w-100 float-left">
                             <div class="tab-pane grid fade active" id="grid" role="tabpanel">
                                 <div class="row">
-                                    @foreach ($newProducts as $product)
+                                    @foreach ($products as $product)
                                         <div class="product-layouts col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                             <div class="product-thumb">
                                                 <div class="image zoom">
@@ -99,9 +112,9 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    @forelse ($newProducts as $product)
+                                    @forelse ($products as $product)
                                     @empty
-                                        <h5 class="text-center">No new products found.</h5>
+                                        <h5 class="text-center">No products found.</h5>
                                     @endforelse
                                 </div>
                             </div>
@@ -112,4 +125,37 @@
             </div>
         </div>
     </main>
+    {{-- <script>
+        function handleSort(select) {
+            var selectedValue = select.value;
+            var baseUrl = window.location.origin + window.location.pathname;
+            var queryParams = new URLSearchParams(window.location.search);
+
+            // Remove existing sort parameter
+            queryParams.delete('sort');
+
+            if (selectedValue !== 'latest') {
+                queryParams.set('sort', selectedValue);
+            }
+
+            var newUrl = baseUrl + '?' + queryParams.toString();
+            window.location.href = newUrl;
+        }
+        var selectElement = document.getElementById('sortList');
+        var selectedSort = selectElement.getAttribute('data-selected-sort');
+
+
+        // Function to set selected option based on value
+        function setSelectedOption(selectElement, value) {
+            for (var i = 0; i < selectElement.options.length; i++) {
+                if (selectElement.options[i].value === value) {
+                    selectElement.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
+        // Call the function to set selected option
+        setSelectedOption(selectElement, '{{ $selectedSort }}');
+    </script> --}}
 @endsection

@@ -36,36 +36,71 @@ class ProductController extends Controller
             $query->latest();
         }
 
-        // Fetch products and paginate the results
-        $products = $query->paginate(12);
+        $products = $query->get();
 
         return view('shop', compact('products', 'category', 'productCount', 'selectedSort'));
     }
 
     public function allProducts(Request $request)
     {
-        // Get the selected sort option from the request
         $selectedSort = $request->input('sort', 'latest');
 
         $productCount = Product::all()->count();
 
-        // Create a base query for fetching products created in the last 15 days
-        $query = Product::where('created_at', '>=', now()->subDays(15));
+        $query = Product::query();
 
-        // Apply sorting based on the selected option
         if ($selectedSort === 'high_to_low') {
             $query->orderBy('product_price', 'desc');
         } elseif ($selectedSort === 'low_to_high') {
             $query->orderBy('product_price', 'asc');
         } else {
-            $query->orderBy('created_at', 'desc'); // Default sorting to latest
+            $query->orderBy('created_at', 'desc');
         }
 
-        // Fetch products with pagination
         $products = $query->get();
 
-        // Pass the products and the selected sort option to the view
         return view('shop-all', compact('productCount', 'products', 'selectedSort'));
+    }
+
+    public function showMore(Request $request)
+    {
+        $filter = $request->query('filter');
+        $categoryName = $this->getCategoryName($filter);
+        $products = $this->getFilteredProducts($filter);
+
+        return view('shop-more', compact('products', 'categoryName'));
+    }
+
+    private function getFilteredProducts($filter)
+    {
+        switch ($filter) {
+            case 'italy':
+                return Product::where('italy', true)->get();
+            case 'autumn':
+                return Product::where('autumn', true)->get();
+            case 'spring':
+                return Product::where('spring', true)->get();
+            case 'accessories':
+                return Product::where('accessories', true)->get();
+            default:
+                return collect();
+        }
+    }
+
+    private function getCategoryName($filter)
+    {
+        switch ($filter) {
+            case 'italy':
+                return 'MADE IN ITALY';
+            case 'autumn':
+                return 'AUTUMN/WINTER';
+            case 'spring':
+                return 'SPRING/SUMMER';
+            case 'accessories':
+                return 'ACCESSORIES';
+            default:
+                return 'ALL ITEMS';
+        }
     }
 
 

@@ -1,7 +1,5 @@
 <?php
 
-// app/FormFields/TagsFormField.php
-
 namespace App\FormFields;
 
 use TCG\Voyager\FormFields\AbstractHandler;
