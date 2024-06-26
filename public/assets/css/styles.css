@@ -1518,6 +1518,9 @@
         height: 269px;
     }
 }
+.logo {
+    margin-top: -14px;
+}
 @media (max-width: 767px) {
     #ttsmartblog
         .container
@@ -1528,7 +1531,7 @@
         position: relative;
     }
     .logo {
-        padding-top: 6px;
+        margin-top: 0px;
     }
 }
 #ttsmartblog

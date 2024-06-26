@@ -76,9 +76,8 @@
                         </div>
                         <div class="header-middle float-lg-left float-md-left float-sm-left float-xs-none">
                             <div class="logo">
-                                <a href="{{ url('/') }}"><img style="margin-top: -14px;"
-                                        src="{{ asset('assets/img/logos/logoo.png') }}" alt="logo" width="180"
-                                        height="40" class="logo"></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logos/logoo.png') }}"
+                                        alt="logo" width="180" height="40" class="logo"></a>
                             </div>
                         </div>
                         <div class="header-right d-flex d-xs-flex d-sm-flex justify-content-end float-right">
@@ -162,7 +161,7 @@
                 </div>
                 <div class="menu">
                     <div class="container">
-                        <!-- Navbar -->
+                        <!-- Navbar (Desktop) -->
                         <nav class="navbar navbar-expand-lg navbar-light d-sm-none d-xs-none d-lg-block navbar-full">
 
                             <!-- Navbar brand -->
@@ -276,7 +275,7 @@
                             <!-- Collapsible content -->
 
                         </nav>
-                        <!-- Navbar -->
+                        <!-- Navbar (Mobile) -->
                         <nav class="navbar navbar-expand-lg navbar-light d-lg-none navbar-responsive">
 
                             <!-- Navbar brand -->
@@ -357,26 +356,25 @@
                                     </li>
 
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-uppercase" href="category.html">
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'italy']) }}">
                                             MADE IN ITALY
                                             <span class="sr-only">(current)</span> </a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-uppercase"
-                                            href="category.html">AUTUMN/WINTER</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'autumn']) }}">AUTUMN/WINTER</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-uppercase"
-                                            href="category.html">SPRING/SUMMER</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'spring']) }}">SPRING/SUMMER</a>
                                     </li>
-
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-uppercase"
-                                            href="category.html">ACCESSORIES</a>
+                                        <a class="nav-link  text-uppercase"
+                                            href="{{ route('shop.more', ['filter' => 'accessories']) }}">ACCESSORIES</a>
                                     </li>
-
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link text-uppercase" href="{{ url('/contact') }}">CONTACT
+                                        <a class="nav-link  text-uppercase" href="{{ url('/contact') }}">CONTACT
                                             US</a>
                                     </li>
                                 </ul>
