@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Banner;
@@ -42,12 +43,12 @@ Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.fo
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 
-// //Carting routes
-// Route::get('cart', [CartController::class, 'cart'])->name('cart');
-// Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
+//Carting routes
+Route::get('cart', [CartController::class, 'cart'])->name('cart');
+Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
 
-// Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
+Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
 
-// Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
+Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
 
-// Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
+Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');

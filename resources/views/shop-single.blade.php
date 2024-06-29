@@ -7,6 +7,14 @@
         }
     </style>
     <main id="product">
+        <nav aria-label="breadcrumb" class="w-100 float-left">
+            <ol class="breadcrumb parallax justify-content-center"
+                data-source-url="{{ asset('assets/img/banner/parallax.jpg') }}"
+                style="background-image: url(&quot;img/banner/parallax.jpg&quot;); background-position: 50% 0.809717%;">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+            </ol>
+        </nav>
         <div class="product-deatils-section float-left w-100 mt-5">
             <div class="container">
                 <div class="row">
@@ -104,8 +112,10 @@
                             </div>
                             {{-- Cart and Social Media --}}
                             <div class="btn-cart d-flex align-items-center float-left w-100">
-                                <button type="button" class="btn btn-primary btn-cart m-0" data-target="#cart-pop"
-                                    data-toggle="modal"><i class="material-icons">shopping_cart</i> Add To Cart</button>
+                                <a href="{{ route('add.cart', $product->id) }}">
+                                    <button type="button" class="btn btn-primary btn-cart m-0" data-target="#cart-pop"
+                                        data-toggle="modal"><i class="material-icons">shopping_cart</i> Add To Cart</button>
+                                </a>
                             </div>
                             <div class="social-sharing float-left w-100">
                                 <ul class="d-flex">

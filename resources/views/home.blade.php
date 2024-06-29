@@ -150,17 +150,24 @@
                                                             </div>
                                                             <div class="button-wrapper">
                                                                 <div class="button-group text-center">
+
                                                                     <button type="button" class="btn btn-primary btn-cart"
                                                                         <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
-                                                                        data-target="#cart-pop" data-toggle="modal"><i
-                                                                            class="material-icons">shopping_cart</i><span>Add
-                                                                            to cart</span></button>
+                                                                        data-target="#cart-pop" data-toggle="modal">
+                                                                        <a href="{{ route('add.cart', $product->id) }}">
+                                                                            <i
+                                                                                class="material-icons">shopping_cart</i><span>Add
+                                                                                to cart</span></a>
+                                                                    </button>
+
 
                                                                     <button type="button"
                                                                         class="btn btn-primary btn-quickview"
-                                                                        data-toggle="modal" data-target="#product_view"><i
-                                                                            class="material-icons">visibility</i><span>Quick
-                                                                            View</span></button>
+                                                                        data-toggle="modal" data-target="#product_view"><a
+                                                                            href="{{ route('shop.single', $product->slug) }}"><i
+                                                                                class="material-icons">visibility</i><span>Quick
+                                                                                View</span></a></button>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -352,14 +359,18 @@
                                                     <div class="button-group text-center">
                                                         <button type="button" class="btn btn-primary btn-cart"
                                                             <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
-                                                            data-target="#cart-pop" data-toggle="modal"><i
-                                                                class="material-icons">shopping_cart</i><span>Add
-                                                                to cart</span></button>
+                                                            data-target="#cart-pop" data-toggle="modal">
+                                                            <a href="{{ route('add.cart', $product->id) }}">
+                                                                <i class="material-icons">shopping_cart</i><span>Add
+                                                                    to cart</span></a>
+                                                        </button>
+
 
                                                         <button type="button" class="btn btn-primary btn-quickview"
-                                                            data-toggle="modal" data-target="#product_view"><i
-                                                                class="material-icons">visibility</i><span>Quick
-                                                                View</span></button>
+                                                            data-toggle="modal" data-target="#product_view"><a
+                                                                href="{{ route('shop.single', $product->slug) }}"><i
+                                                                    class="material-icons">visibility</i><span>Quick
+                                                                    View</span></a></button>
                                                     </div>
                                                 </div>
                                             </div>

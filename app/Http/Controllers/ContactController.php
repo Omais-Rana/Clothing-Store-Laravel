@@ -29,7 +29,7 @@ class ContactController extends Controller
             'message' => $request->message,
         ];
 
-        Mail::to('omaisrana439@gmail.com')->send(new ContactMail($details));
+        Mail::to('poshmarktradinguk@gmail.com')->send(new ContactMail($details));
 
         return back()->with('success', 'Your message has been sent successfully!');
     }

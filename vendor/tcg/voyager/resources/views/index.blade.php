@@ -70,7 +70,7 @@
         <div class="container" style="display:flex ;justify-content: space-evenly">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="#">
+                    <a href="http://poshmarktrading.com">
                         <div class="card">
                             Go to website
                         </div>

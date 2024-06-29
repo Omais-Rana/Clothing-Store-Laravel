@@ -1519,7 +1519,7 @@
     }
 }
 .logo {
-    margin-top: -14px;
+    margin-top: -5px;
 }
 @media (max-width: 767px) {
     #ttsmartblog
@@ -3235,7 +3235,7 @@ input[type="radio"] {
 }
 
 a {
-    color: #666;
+    color: whitesmoke;
 }
 
 a:hover {

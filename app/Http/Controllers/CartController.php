@@ -12,6 +12,7 @@ class CartController extends Controller
     {
         $total = Cart::getTotal();
         $items = Cart::getContent();
+
         return view('cart', compact('items', 'total'));
     }
 
@@ -19,17 +20,22 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($productId);
 
-        Cart::add(array(
+        // Fetch product images and prepare for storage in cart
+        $images = json_decode($product->product_images);
+
+        // Ensure only the first image path is stored in the cart attributes
+        $imageToStore = isset($images[0]) ? $images[0] : null;
+
+        Cart::add([
             'id' => $productId,
             'name' => $product->product_name,
             'price' => $product->product_price,
             'quantity' => 1,
-            'attributes' => array(
-                'image' => $product->product_image_1,
-
-            ),
+            'attributes' => [
+                'image' => $imageToStore, // Store only the first image path
+            ],
             'associatedModel' => $product
-        ));
+        ]);
 
         return redirect()->route('cart')->with('success', 'Item has been addeed to the cart');
     }
