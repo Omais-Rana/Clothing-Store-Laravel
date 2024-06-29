@@ -16,51 +16,65 @@ class CartController extends Controller
         return view('cart', compact('items', 'total'));
     }
 
-    public function addCart($productId)
+    public function addCart(Request $request, $productId)
     {
         $product = Product::findOrFail($productId);
 
-        // Fetch product images and prepare for storage in cart
         $images = json_decode($product->product_images);
 
-        // Ensure only the first image path is stored in the cart attributes
         $imageToStore = isset($images[0]) ? $images[0] : null;
 
-        Cart::add([
-            'id' => $productId,
-            'name' => $product->product_name,
-            'price' => $product->product_price,
-            'quantity' => 1,
-            'attributes' => [
-                'image' => $imageToStore, // Store only the first image path
-            ],
-            'associatedModel' => $product
-        ]);
+        $size = $request->input('size');
+        $color = $request->input('color');
+
+        $uniqueId = $productId . '-' . $size . '-' . $color;
+
+        $existingItem = Cart::get($uniqueId);
+
+        if ($existingItem) {
+            Cart::update($uniqueId, array(
+                'quantity' => $existingItem->quantity + 1,
+            ));
+        } else {
+            Cart::add(array(
+                'id' => $uniqueId,
+                'name' => $product->product_name,
+                'price' => $product->product_price,
+                'quantity' => 1,
+                'attributes' => array(
+                    'image' => $imageToStore,
+                    'size' => $size,
+                    'color' => $color,
+                    'product_id' => $productId
+                ),
+                'associatedModel' => $product
+            ));
+        }
 
         return redirect()->route('cart')->with('success', 'Item has been addeed to the cart');
     }
 
-    public function addQuantity($productId)
+    public function addQuantity($id)
     {
-        Cart::update($productId, [
+        Cart::update($id, [
             'quantity' => +1
         ]);
 
         return back()->with('success', 'Quantity has been increased');
     }
 
-    public function decreaseQuantity($productId)
+    public function decreaseQuantity($id)
     {
-        Cart::update($productId, [
+        Cart::update($id, [
             'quantity' => -1
         ]);
 
         return back()->with('success', 'item quantity has been decreased');
     }
 
-    public function removeItem($productId)
+    public function removeItem($id)
     {
-        Cart::remove($productId);
+        Cart::remove($id);
         return back()->with('success', 'item has been removed from the cart');
     }
 }

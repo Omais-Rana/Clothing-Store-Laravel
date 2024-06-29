@@ -10,6 +10,9 @@
 #hometab .tabs .nav-tabs .nav-item {
     position: relative;
 }
+#remove:hover {
+    color: red !important;
+}
 @media (max-width: 543px) {
     #hometab .tabs .nav-tabs .nav-item {
         width: 70%;
@@ -2275,6 +2278,9 @@
         padding: 0;
     }
 }
+.material-icons {
+    color: whitesmoke;
+}
 .block-newsletter .parallax .tt-newsletter h2::before {
     font-family: "Material Icons";
     content: "";
@@ -3235,6 +3241,10 @@ input[type="radio"] {
 }
 
 a {
+    color: #666;
+}
+
+.product-a {
     color: whitesmoke;
 }
 

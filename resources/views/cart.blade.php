@@ -28,81 +28,157 @@
                                 </div>
                             @endif
 
-                            <div class="card border shadow-0">
+                            <div class="card border shadow-sm">
                                 <div class="m-4">
-                                    @foreach ($items as $item)
-                                        <div class="row gy-3 mb-4">
-                                            <div class="col-lg-5">
-                                                <div class="me-lg-5">
-                                                    <div class="d-flex">
-                                                        <?php $images = json_decode($item->associatedModel->product_images); ?>
-                                                        <img src="{{ Voyager::image($images[0]) }}"
-                                                            class="border rounded me-3" style="width: 96px; height: 96px"
-                                                            alt="Product Image" />
+                                    <!-- Desktop Header Row -->
+                                    <div class="row gy-3 mb-4 align-items-center text-center d-none d-md-flex">
+                                        <div class="col-md-2" style="font-weight:bold">Image</div>
+                                        <div class="col-md-2" style="font-weight:bold">Name</div>
+                                        <div class="col-md-2" style="font-weight:bold">Price</div>
+                                        <div class="col-md-1" style="font-weight:bold">Size</div>
+                                        <div class="col-md-1" style="font-weight:bold">Color</div>
+                                        <div class="col-md-2" style="font-weight:bold">Quantity</div>
+                                        <div class="col-md-1" style="font-weight:bold">Total Price</div>
+                                        <div class="col-md-1" style="font-weight:bold">Remove</div>
+                                    </div>
 
-                                                        <div class="">
-                                                            <p>{{ $item->name }}</p>
-                                                            <p class="text-muted">
-                                                                {{ Number::currency($item->price, 'USD') }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                    @foreach ($items as $item)
+                                        <!-- Desktop View -->
+                                        <div class="row gy-3 mb-4 align-items-center text-center d-none d-md-flex">
+                                            <div class="col-md-2">
+                                                <?php $images = json_decode($item->associatedModel->product_images); ?>
+                                                <img src="{{ Voyager::image($images[0]) }}" class="border rounded"
+                                                    style="width: 96px; height: 96px;" alt="Product Image" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h6>{{ $item->name }}</h6>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <p class="text-muted">{{ Number::currency($item->price, 'USD') }}</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                @if (isset($item->attributes['size']) && is_string($item->attributes['size']))
+                                                    {{ $item->attributes['size'] }}
+                                                @else
+                                                    Not specified
+                                                @endif
+                                            </div>
+                                            <div class="col-md-1">
+                                                @if (isset($item->attributes['color']) && is_string($item->attributes['color']))
+                                                    {{ $item->attributes['color'] }}
+                                                @else
+                                                    Not specified
+                                                @endif
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="input-group bootstrap-touchspin">
+                                                    <span class="input-group-btn">
+                                                        <a href="{{ route('decrease.quantity', $item->id) }}"
+                                                            class="btn btn-light bootstrap-touchspin-down"
+                                                            type="button">-</a>
+                                                    </span>
+                                                    <input type="text" name="" value="{{ $item->quantity }}"
+                                                        class="form-control mx-1.5" />
+                                                    <span class="input-group-btn">
+                                                        <a href="{{ route('add.quantity', $item->id) }}"
+                                                            class="btn btn-light bootstrap-touchspin-up"
+                                                            type="button">+</a>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-sm-6 col-6">
-                                                <td>
-                                                    <div class="input-group bootstrap-touchspin">
-                                                        <span class="input-group-btn"><a
-                                                                href="{{ route('decrease.quantity', $item->id) }}"
-                                                                class="btn btn-default bootstrap-touchspin-down"
-                                                                type="button">-</a></span><span
-                                                            class="input-group-addon bootstrap-touchspin-prefix"
-                                                            style="display: none"></span>
-                                                        <input type="text" name="" value="{{ $item->quantity }}"
-                                                            class="form-control mx-1" />
-                                                        <span class="input-group-addon bootstrap-touchspin-postfix"
-                                                            style="display: none"></span><span class="input-group-btn">
-                                                            <a href="{{ route('add.quantity', $item->id) }}"
-                                                                class="btn btn-default bootstrap-touchspin-up"
-                                                                type="button">+</a></span>
-                                                    </div>
-                                                </td>
-                                                <div class="">
-                                                    <p class="h6">
-                                                        ${{ $item->quantity * $item->price }}
-                                                    </p>
-                                                </div>
+                                            <div class="col-md-1">
+                                                <p>${{ $item->quantity * $item->price }}</p>
                                             </div>
-                                            <div
-                                                class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
-                                                <div class="float-md-end">
-                                                    <a href="{{ route('remove.item', $item->id) }}"
-                                                        class="btn btn-light border text-danger icon-hover-danger">
-                                                        Remove</a>
-                                                </div>
+                                            <div class="col-md-1">
+                                                <a href="{{ route('remove.item', $item->id) }}"><i class="material-icons"
+                                                        id="remove" style="color: #666">delete</i></a>
                                             </div>
                                         </div>
-                                        <hr />
-                                    @endforeach
 
+                                        <!-- Mobile View -->
+                                        <div class="row gy-3 mb-4 align-items-center text-center d-md-none">
+                                            <div class="col-12 d-flex justify-content-between">
+                                                <div class="d-flex">
+                                                    <?php $images = json_decode($item->associatedModel->product_images); ?>
+                                                    <img src="{{ Voyager::image($images[0]) }}" class="border rounded me-3"
+                                                        style="width: 60px; height: 60px;" alt="Product Image" />
+                                                    <div class="text-start" style="padding-left: 70px;">
+                                                        <h6 class="mb-0">{{ $item->name }}</h6>
+                                                        <small class="text-muted d-block">Price:
+                                                            {{ Number::currency($item->price, 'USD') }}</small>
+                                                        <small class="text-muted d-block">
+                                                            Size: {{ $item->attributes['size'] ?? 'Not specified' }}
+                                                        </small>
+                                                        <small class="text-muted d-block">
+                                                            Color: {{ $item->attributes['color'] ?? 'Not specified' }}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <a href="{{ route('remove.item', $item->id) }}" class="text-danger">
+                                                        <i class="material-icons" id="remove"
+                                                            style="color: #666">delete</i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <div class="input-group bootstrap-touchspin">
+                                                            <span class="input-group-btn">
+                                                                <a href="{{ route('decrease.quantity', $item->id) }}"
+                                                                    class="btn btn-light bootstrap-touchspin-down"
+                                                                    type="button">-</a>
+                                                            </span>
+                                                            <input type="text" name=""
+                                                                value="{{ $item->quantity }}"
+                                                                class="form-control mx-1.5" />
+                                                            <span class="input-group-btn">
+                                                                <a href="{{ route('add.quantity', $item->id) }}"
+                                                                    class="btn btn-light bootstrap-touchspin-up"
+                                                                    type="button">+</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-2">
+                                                <p>Total Price: ${{ $item->quantity * $item->price }}</p>
+                                            </div>
+                                        </div>
+
+                                        @if (!$loop->last)
+                                            <hr />
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
+
+
                         </div>
                         <!-- cart -->
                         <!-- summary -->
                         <div class="col-lg-3">
-                            <div class="card mb-3 pt-10 pb-10 border shadow-0 text-center">
-                                <h3 style="color: #2d2d2d">Order Summary</h2>
+                            <div class="card mb-3 border shadow-0 text-center" style="padding: 10px 0">
+                                <h3 style="color: #666; font: 700 22px/20px Playfair Display, Helvetica, sans-serif">Cart
+                                    Totals</h2>
                             </div>
                             <div class="card shadow-0 border">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Total Price:</p>
+
+                                        <p class="mb-2">Total Items:</p>
+                                        <p class="mb-2 fw-bold">{{ Cart::getTotalQuantity() }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+
+                                        <p class="mb-2">Total Amount:</p>
                                         <p class="mb-2 fw-bold">{{ Number::currency($total, 'USD') }}</p>
                                     </div>
 
                                     <div class="mt-3">
-                                        <a href="#" class="btn btn-success w-100 shadow-0 mb-2">
+                                        <a href="#" class="btn btn-primary w-100 shadow-0 mb-2">
                                             Checkout
                                         </a>
                                         <a href="{{ url('/') }}" class="btn btn-light w-100 border mt-2">

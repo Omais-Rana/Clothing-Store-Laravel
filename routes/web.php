@@ -45,10 +45,8 @@ Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact
 
 //Carting routes
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
-Route::get('add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
 
-Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
-
-Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
-
-Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
+Route::post('/add-cart/{productId}', [CartController::class, 'addCart'])->name('add.cart');
+Route::get('add-quantity/{id}', [CartController::class, 'addQuantity'])->name('add.quantity');
+Route::get('decrease-quantity/{id}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
+Route::get('remove-item/{id}', [CartController::class, 'removeItem'])->name('remove.item');
