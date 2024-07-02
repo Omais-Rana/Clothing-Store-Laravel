@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-use App\Models\Order; // Import your Order model
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderConfirmation;
 
@@ -38,6 +38,18 @@ class CheckoutController extends Controller
         $city = $request->input('city');
         $zip = $request->input('zip');
 
+        // Prepare product details
+        $cartItems = Cart::getContent();
+        $productDetails = [];
+        foreach ($cartItems as $item) {
+            $productDetails[] = [
+                'name' => $item->name,
+                'quantity' => $item->quantity,
+                'size' => $item->attributes['size'],
+                'color' => $item->attributes['color'],
+            ];
+        }
+
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         // Create a Stripe Session
@@ -67,11 +79,13 @@ class CheckoutController extends Controller
         $order->address = $address;
         $order->city = $city;
         $order->zip = $zip;
-        $order->total_amount = Cart::getTotal() * 100;
-        // Add more fields as needed
+        $order->total_amount = Cart::getTotal();
+
+        // Store product details JSON or serialize in database
+        $order->product_details = json_encode($productDetails);
+
         $order->save();
 
-        // Redirect to Stripe Checkout session URL
         return redirect($checkoutSession->url);
     }
 
@@ -83,7 +97,7 @@ class CheckoutController extends Controller
         $session = Session::retrieve($sessionId);
 
         if ($session->payment_status === 'paid') {
-            // Optionally, send order confirmation email
+
             // Mail::to($session->customer_email)->send(new OrderConfirmation($order));
 
             return view('checkout.success');

@@ -46,6 +46,8 @@
                             <tr>
                                 <th>Item</th>
                                 <th>Price</th>
+                                <th>Size</th>
+                                <th>Color</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
                             </tr>
@@ -59,6 +61,8 @@
                                         {{ $item->name }}
                                     </td>
                                     <td>${{ $item->price }}</td>
+                                    <td>{{ $item->attributes['size'] ?? 'Not specified' }}</td>
+                                    <td>{{ $item->attributes['color'] ?? 'Not specified' }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>${{ $item->price * $item->quantity }}</td>
                                 </tr>
