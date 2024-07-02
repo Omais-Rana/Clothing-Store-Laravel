@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Banner;
@@ -50,3 +51,12 @@ Route::post('/add-cart/{productId}', [CartController::class, 'addCart'])->name('
 Route::get('add-quantity/{id}', [CartController::class, 'addQuantity'])->name('add.quantity');
 Route::get('decrease-quantity/{id}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
 Route::get('remove-item/{id}', [CartController::class, 'removeItem'])->name('remove.item');
+
+
+//Checkout Routes
+Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
+Route::post('/checkout/pay', [CheckoutController::class, 'pay'])->name('checkout.pay');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
+
+Route::post('stripe/webhook', 'StripeWebhookController@handleWebhook')->name('cashier.webhook')->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);

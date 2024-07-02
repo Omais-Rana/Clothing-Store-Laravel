@@ -11,11 +11,11 @@ class ProductController extends Controller
 
     public function newProducts(Request $request)
     {
-        $newProducts = Product::where('created_at', '>=', now()->subDays(15))
+        $newProducts = Product::where('created_at', '>=', now()->subDays(20))
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $productCount = Product::where('created_at', '>=', now()->subDays(15))->count();
+        $productCount = Product::where('created_at', '>=', now()->subDays(20))->count();
 
         return view('shop-new', compact('newProducts', 'productCount'));
     }

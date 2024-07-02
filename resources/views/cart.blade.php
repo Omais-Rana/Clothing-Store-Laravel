@@ -178,7 +178,7 @@
                                     </div>
 
                                     <div class="mt-3">
-                                        <a href="#" class="btn btn-primary w-100 shadow-0 mb-2">
+                                        <a href="{{ url('/checkout') }}" class="btn btn-primary w-100 shadow-0 mb-2">
                                             Checkout
                                         </a>
                                         <a href="{{ url('/') }}" class="btn btn-light w-100 border mt-2">
