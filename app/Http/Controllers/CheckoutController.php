@@ -30,7 +30,6 @@ class CheckoutController extends Controller
             'zip' => 'required|string',
         ]);
 
-        // Retrieve necessary data
         $name = $request->input('name');
         $email = $request->input('email');
         $phone = $request->input('phone');
@@ -38,7 +37,6 @@ class CheckoutController extends Controller
         $city = $request->input('city');
         $zip = $request->input('zip');
 
-        // Prepare product details
         $cartItems = Cart::getContent();
         $productDetails = [];
         foreach ($cartItems as $item) {
@@ -52,7 +50,6 @@ class CheckoutController extends Controller
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        // Create a Stripe Session
         $checkoutSession = Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => $email,
@@ -71,7 +68,6 @@ class CheckoutController extends Controller
             'cancel_url' => route('checkout.cancel'),
         ]);
 
-        // Store order details in your database
         $order = new Order();
         $order->name = $name;
         $order->email = $email;
@@ -81,7 +77,6 @@ class CheckoutController extends Controller
         $order->zip = $zip;
         $order->total_amount = Cart::getTotal();
 
-        // Store product details JSON or serialize in database
         $order->product_details = json_encode($productDetails);
 
         $order->save();

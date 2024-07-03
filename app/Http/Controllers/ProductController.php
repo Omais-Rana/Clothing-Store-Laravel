@@ -11,11 +11,11 @@ class ProductController extends Controller
 
     public function newProducts(Request $request)
     {
-        $newProducts = Product::where('created_at', '>=', now()->subDays(20))
+        $newProducts = Product::where('created_at', '>=', now()->subDays(30))
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $productCount = Product::where('created_at', '>=', now()->subDays(20))->count();
+        $productCount = Product::where('created_at', '>=', now()->subDays(30))->count();
 
         return view('shop-new', compact('newProducts', 'productCount'));
     }
@@ -112,5 +112,37 @@ class ProductController extends Controller
         $sizes = json_decode($product->product_size, true) ?? [];
         $colors = json_decode($product->product_color, true) ?? [];
         return view('shop-single', compact('product', 'sizes', 'colors'));
+    }
+
+    public function search(Request $request)
+    {
+        $selectedSort = $request->input('sort', 'latest');
+        $term = $request->input('term', '');
+
+        $query = Product::query();
+
+        if ($term) {
+            $query->where(function ($q) use ($term) {
+                $q->where('product_name', 'like', '%' . $term . '%')
+                    ->orWhere('category_name', 'like', '%' . $term . '%');
+            });
+        }
+
+        switch ($selectedSort) {
+            case 'high_to_low':
+                $query->orderBy('product_price', 'desc');
+                break;
+            case 'low_to_high':
+                $query->orderBy('product_price', 'asc');
+                break;
+            case 'latest':
+            default:
+                $query->orderBy('created_at', 'desc');
+                break;
+        }
+
+        $products = $query->get();
+
+        return view('shop-search', compact('products', 'term', 'selectedSort'));
     }
 }

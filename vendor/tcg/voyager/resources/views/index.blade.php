@@ -3,58 +3,34 @@
 @section('content')
     <style>
         .card {
-            position: relative;
-            width: 220px;
-            height: 320px;
-            background: #EBC11A;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            font-weight: bold;
-            color: whitesmoke;
-            border-radius: 15px;
+            box-sizing: border-box;
+            width: 190px;
+            height: 254px;
+            background: #f7cf30;
+            border: 1px solid white;
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(6px);
+            border-radius: 17px;
+            text-align: center;
             cursor: pointer;
-        }
-
-        .card::before,
-        .card::after {
-            position: absolute;
-            content: "";
-            width: 20%;
-            height: 20%;
+            transition: all 0.5s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 25px;
-            font-weight: bold;
-            background-color: lightblue;
-            transition: all 0.5s;
+            user-select: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: #4b4a4a;
         }
 
-        .card::before {
-            top: 0;
-            right: 0;
-            border-radius: 0 15px 0 100%;
+        .card:hover {
+            border: 1px solid black;
+            transform: scale(1.05);
+            color: #2d2d2d;
         }
 
-        .card::after {
-            bottom: 0;
-            left: 0;
-            border-radius: 0 100% 0 15px;
-        }
-
-        .card:hover::before,
-        .card:hover:after {
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            transition: all 0.5s;
-        }
-
-        .card:hover:after {
-            content: "Open";
-            color: #757272;
+        .card:active {
+            transform: scale(0.95) rotateZ(1.7deg);
         }
     </style>
     <div class="page-content">
@@ -69,17 +45,24 @@
         </div>
         <div class="container" style="display:flex ;justify-content: space-evenly">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <a href="http://poshmarktrading.com">
                         <div class="card">
                             Go to website
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <a href="{{ route('voyager.products.index') }}">
                         <div class="card">
                             Manage store
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ route('voyager.orders.index') }}">
+                        <div class="card">
+                            See orders
                         </div>
                     </a>
                 </div>

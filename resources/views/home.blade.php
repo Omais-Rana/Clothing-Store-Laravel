@@ -387,10 +387,17 @@
                 <div id="ttbrandlogo" class="my-40 my-sm-25 bottom-to-top hb-animate-element">
                     <div class="container">
                         <div class="tt-brand owl-carousel">
-                            <div class="item">
-                                <a href="#"><img src="{{ asset('assets/img/logos/brand-logo-01.png') }}"
-                                        alt="brand-logo-01" width="140" height="100"></a>
-                            </div>
+                            @foreach ($brands as $brand)
+                                <?php $images = json_decode($brand->Brand_logo); ?>
+                                @foreach ($images as $image)
+                                    <div class="item">
+                                        <a href="#">
+                                            <img src="{{ Voyager::image($image) }}" alt="" height="800"
+                                                width="1600" />
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>

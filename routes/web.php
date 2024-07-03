@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Banner;
+use App\Brand;
 use TCG\Voyager\Facades\Voyager;
 
 Route::group(['prefix' => 'admin'], function () {
@@ -17,7 +18,8 @@ Route::get('/', function () {
     $banners = Banner::orderBy('created_at', 'desc')->get();
     $featured = Product::where('featured', true)->orderBy('created_at', 'desc')->get(); //latest trending
     $special = Product::where('special', true)->orderBy('created_at', 'desc')->get(); //latest special
-    return view('home', compact('featured', 'special', 'banners'));
+    $brands = Brand::orderBy('created_at', 'desc')->get();
+    return view('home', compact('featured', 'special', 'banners', 'brands'));
 });
 
 // Show New Arrivals 
@@ -34,6 +36,9 @@ Route::get('/all-items', [ProductController::class, 'allProducts'])->name('produ
 
 // Show single product
 Route::get('/products/{slug}', [ProductController::class, 'shopSingle'])->name('shop.single');
+
+// search bar submission
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 // Route::get('/about', function () {
 //     return view('about');

@@ -46,32 +46,16 @@
                     <div class="container">
                         <div class="header-left float-left d-flex d-lg-flex d-md-block d-xs-block">
                             <div class="language-wrapper toggle">
-                                <button type="button" class="btn text-capitalize dropdown-toggle"><img
+                                <button type="button" class="btn text-capitalize"><img
                                         src="{{ asset('assets/img/banner/en.png') }}" alt="en" height="12"
                                         width="18" /><span>English</span></button>
-                                <div id="language-dropdown" class="language">
-                                    <ul>
-                                        <li><img src="{{ asset('assets/img/banner/en.png') }}" alt="en"
-                                                width="18" height="12" /><span>English</span></li>
-                                        <li><img src="{{ asset('assets/img/banner/fr.png') }}" alt="fr"
-                                                width="18" height="12" /><span>French</span></li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="currency-wrapper toggle">
-                                <button type="button" class="btn text-capitalize dropdown-toggle"><span>€
-                                        Euro</span></button>
-                                <div id="currency-dropdown" class="currency">
-                                    <ul>
-                                        <li><span>€ Euro</span></li>
-                                        <li><span>£ Pound Sterling</span></li>
-                                        <li><span>$ US Dollar</span></li>
-                                    </ul>
-                                </div>
+                                <button type="button" class="btn text-capitalize"><span>$ US Dollar</span></button>
                             </div>
                             <div class="contact">
                                 <i class="material-icons" style="color: #666">phone</i>
-                                <a href="tel:+447534300611">07534300611</a>
+                                <a href="tel:+447534300611">+447534300611</a>
                             </div>
                         </div>
                         <div class="header-middle float-lg-left float-md-left float-sm-left float-xs-none">
@@ -83,16 +67,18 @@
                         <div class="header-right d-flex d-xs-flex d-sm-flex justify-content-end float-right">
                             <div class="search-wrapper">
                                 <a>
-                                    <i class="material-icons search">search</i>
+                                    <i class="material-icons search" style="padding-top: 14px;">search</i>
                                     <i class="material-icons close">close</i> </a>
-                                <form autocomplete="off" action="/action_page.php" class="search-form">
+                                <form autocomplete="off" action="{{ route('search') }}" method="GET" id="searchForm"
+                                    class="search-form">
                                     <div class="autocomplete">
-                                        <input id="myInput" type="text" name="myCountry" placeholder="Search here">
-                                        <button type="button"><i class="material-icons">search</i></button>
+                                        <input id="myInput" type="text" name="term" placeholder="Search here">
+                                        <button type="submit"><i class="material-icons"
+                                                style="color: black">search</i></button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="user-info">
+                            {{-- <div class="user-info">
                                 <button type="button" class="btn">
                                     <i class="material-icons">perm_identity</i> </button>
                                 <div id="user-dropdown" class="user-menu">
@@ -104,7 +90,7 @@
                                                 data-target="#modalLoginForm">login</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="cart-wrapper">
                                 <a href="{{ url('/cart') }}">
                                     <button type="button" class="btn">
@@ -382,7 +368,7 @@
                         <div class="footer-desc">A fashion brand for men and women. Top quality products.</div>
                     </div>
                 </div>
-                <div class="col-md-2 footer-column">
+                <div class="col-md-3 footer-column">
                     <div class="title">
                         <a href="#products" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
                             aria-expanded="false">Company</a>
@@ -400,7 +386,7 @@
                     </ul>
 
                 </div>
-                <div class="col-md-2 footer-column">
+                <div class="col-md-3 footer-column">
                     <div class="title">
                         <a href="#company" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
                             aria-expanded="false">Products</a>
@@ -418,7 +404,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-2 footer-column">
+                {{-- <div class="col-md-2 footer-column">
                     <div class="title">
                         <a href="#account" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
                             aria-expanded="false">your account</a>
@@ -434,9 +420,8 @@
                             <a href="contact-us.html">addresses</a>
                         </li>
                     </ul>
-
-                </div>
-                <div class="col-md-2 footer-column">
+                </div> --}}
+                <div class="col-md-4 footer-column">
                     <div class="title">
                         <a href="#information" class="font-weight-normal text-capitalize mb-10"
                             data-toggle="collapse" aria-expanded="false">store information</a>
@@ -444,7 +429,8 @@
                     <ul id="information" class="list-unstyled collapse">
                         <li class="contact-detail links">
                             <span class="address">
-                                <span class="icon"><i class="material-icons">location_on</i></span>
+                                <span class="icon"><i class="material-icons"
+                                        style="padding-top: 4px;">location_on</i></span>
                                 <span class="data"> 34 Broughton Street, Manchester , United Kingdom</span> </span>
                         </li>
                         <li class="links">
@@ -455,7 +441,7 @@
                         <li class="links">
                             <span class="email">
                                 <span class="icon"><i class="material-icons">email</i></span>
-                                <span class="data" style="padding-left: 15px"><a
+                                <span class="data"><a
                                         href="mailto:poshmarktradinguk@gmail.com">poshmarktradinguk@gmail.com</a></span>
                             </span>
                         </li>
@@ -489,6 +475,15 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        document.getElementById('myInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.getElementById('searchForm').submit();
+            }
+        });
+    </script>
+
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>

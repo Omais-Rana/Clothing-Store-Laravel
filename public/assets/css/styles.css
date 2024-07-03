@@ -2461,7 +2461,7 @@
     bottom: 0;
     margin: auto;
     left: 0;
-    height: 30px;
+    height: 23px;
 }
 .page-footer .footer-column ul li span.icon i {
     font-size: 13px;
@@ -2708,8 +2708,8 @@
     }
 }
 .page-footer.footer-default .footer-column {
-    flex: 0 0 20%;
-    max-width: 20%;
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 @media (max-width: 991px) {
     .page-footer.footer-default .footer-column {
