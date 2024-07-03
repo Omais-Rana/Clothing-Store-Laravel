@@ -40,9 +40,10 @@ Route::get('/products/{slug}', [ProductController::class, 'shopSingle'])->name('
 // search bar submission
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-// Route::get('/about', function () {
-//     return view('about');
-// });
+Route::get('/about', function () {
+    $brand = Brand::orderBy('created_at', 'desc')->get();
+    return view('about', compact('brand'));
+});
 
 // Contact us routes
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
