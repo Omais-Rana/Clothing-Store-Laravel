@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmation</title>
+    <title>New Order Notification</title>
     <style>
+        /* Basic styles for the email */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
+            border: 1px solid #ddd;
             border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -35,64 +35,46 @@
             padding: 20px;
         }
 
-        .content h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .order-details {
-            margin-bottom: 20px;
-        }
-
-        .order-details h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
         .order-details table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         .order-details th,
         .order-details td {
-            border: 1px solid #dddddd;
+            border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
 
         .order-details th {
-            background-color: #f2f2f2;
+            background-color: #f8f8f8;
         }
 
         .order-summary {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
+            margin-top: 20px;
         }
 
         .order-summary p {
-            margin: 0;
-            font-size: 16px;
+            margin: 5px 0;
         }
 
-        .order-summary .total {
-            font-size: 18px;
+        .total {
+            font-size: 1.2em;
             font-weight: bold;
+            margin-top: 10px;
         }
 
         .footer {
             text-align: center;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border-top: 1px solid #dddddd;
-            font-size: 14px;
-            color: #555555;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer p {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -100,10 +82,8 @@
 <body>
     <div class="container">
         <div class="content">
-            <h1>Order Confirmation</h1>
-            <p>Hi {{ $order->name }},</p>
-            <p>Thank you for your order! We have received your payment and are processing your order. Below are the
-                details of your purchase:</p>
+            <h1>New Order Notification</h1>
+            <p>A new order has been placed. Below are the details:</p>
             <div class="order-details">
                 <h2>Order Details</h2>
                 <table>
@@ -128,19 +108,13 @@
                 </table>
             </div>
             <div class="order-summary">
-                <p><strong>Name:</strong> {{ $order->name }}</p>
+                <p><strong>Customer Name:</strong> {{ $order->name }}</p>
                 <p><strong>Email:</strong> {{ $order->email }}</p>
                 <p><strong>Phone:</strong> {{ $order->phone }}</p>
                 <p><strong>Address:</strong> {{ $order->address }}, {{ $order->city }}, {{ $order->zip }}</p>
-                <p class="total"><strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}</p>
+                <p><strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}</p>
             </div>
-            <p>If you have any questions or need further assistance, please contact our support team.</p>
-            <p>Thank you for shopping with us!</p>
-        </div>
-        <div class="footer">
-            <p>&copy; {{ date('Y') }} Your Company. All rights reserved.</p>
-            <p><a href="https://www.poshmarktrading.com">Visit our website</a> | <a
-                    href="mailto:poshmarktradinguk@gmail.com">Contact support</a></p>
+            <p>Please process this order promptly. Thank you.</p>
         </div>
     </div>
 </body>

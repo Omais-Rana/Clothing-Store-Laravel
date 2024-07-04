@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminOrderNotification;
 use Illuminate\Http\Request;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use Stripe\Stripe;
@@ -43,6 +44,7 @@ class CheckoutController extends Controller
             $productDetails[] = [
                 'name' => $item->name,
                 'quantity' => $item->quantity,
+                'price' => $item->price,
                 'size' => $item->attributes['size'],
                 'color' => $item->attributes['color'],
             ];
@@ -92,14 +94,21 @@ class CheckoutController extends Controller
         $session = Session::retrieve($sessionId);
 
         if ($session->payment_status === 'paid') {
+            $order = Order::where('email', $session->customer_email)
+                ->latest()
+                ->first();
 
-            // Mail::to($session->customer_email)->send(new OrderConfirmation($order));
+            if ($order) {
+                Mail::to($order->email)->send(new OrderConfirmation($order));
+                Mail::to('poshmarktradinguk@gmail.com')->send(new AdminOrderNotification($order));
+            }
 
             return view('checkout.success');
         }
 
         return redirect()->route('checkout.cancel');
     }
+
 
     public function cancel()
     {

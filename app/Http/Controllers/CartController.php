@@ -51,7 +51,7 @@ class CartController extends Controller
             ));
         }
 
-        return redirect()->route('cart')->with('success', 'Item has been addeed to the cart');
+        return redirect()->route('cart')->with('success', 'Item has been added to the cart');
     }
 
     public function addQuantity($id)

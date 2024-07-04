@@ -10,17 +10,16 @@ class OrderConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $session;
+    public $order;
 
-    public function __construct($session)
+    public function __construct($order)
     {
-        $this->session = $session;
+        $this->order = $order;
     }
 
     public function build()
     {
         return $this->subject('Order Confirmation')
-            ->view('emails.order_confirmation')
-            ->with(['session' => $this->session]);
+            ->view('emails.order_confirmation');
     }
 }
