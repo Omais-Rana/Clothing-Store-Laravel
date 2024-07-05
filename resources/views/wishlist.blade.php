@@ -51,7 +51,7 @@
                                         @if ($product->product_stock === 0)
                                             Out Of Stock
                                         @else
-                                            in stock
+                                            In Stock
                                         @endif
                                     </td>
                                     <td class="table-addtocart"><a href="{{ route('shop.single', $product->slug) }}"
