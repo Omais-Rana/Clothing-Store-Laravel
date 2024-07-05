@@ -20,19 +20,6 @@
                                 class="hidden-sm-down total-products d-flex d-xs-block d-lg-flex col-md-3 col-sm-3 col-xs-12 align-items-center">
                                 <h6 class="text-center">Showing results</h6>
                             </div>
-                            {{-- <div
-                                class="shop-results-wrapper d-flex d-sm-flex d-xs-block d-lg-flex justify-content-end col-md-9 col-sm-9 col-xs-12">
-                                <div class="shop-results d-flex align-items-center"><span>Sort By</span>
-                                    <div class="shop-select sort">
-                                        <select name="sortList" id="sortList" onchange="handleSort(this)"
-                                            data-selected-sort="{{ $selectedSort }}">
-                                            <option value="latest">Latest products</option>
-                                            <option value="high_to_low">Price High to Low</option>
-                                            <option value="low_to_high">Price Low to High</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </header>
                         <div class="tab-content text-center products w-100 float-left">
                             <div class="tab-pane grid fade active" id="grid" role="tabpanel">
@@ -97,11 +84,11 @@
                                                     <div class="button-wrapper">
                                                         <div class="button-group text-center">
                                                             <button type="button" class="btn btn-primary btn-cart"
-                                                                <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
                                                                 data-target="#cart-pop" data-toggle="modal">
-                                                                <a href="{{ url('/cart') }}">
-                                                                    <i class="material-icons">shopping_cart</i><span>Add
-                                                                        to cart</span></a>
+                                                                <a
+                                                                    href="{{ route('wishlist.add', ['product_id' => $product->id]) }}">
+                                                                    <i class="material-icons">favorite</i><span>Add
+                                                                        to wishlist</span></a>
                                                             </button>
 
 

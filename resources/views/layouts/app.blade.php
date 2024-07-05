@@ -78,24 +78,18 @@
                                     </div>
                                 </form>
                             </div>
-                            {{-- <div class="user-info">
-                                <button type="button" class="btn">
-                                    <i class="material-icons">perm_identity</i> </button>
-                                <div id="user-dropdown" class="user-menu">
-                                    <ul>
-                                        <!-- <li><a href="my-account.html" class="text-capitalize">my account</a></li> -->
-                                        <li><a href="#" class="modal-view button" data-toggle="modal"
-                                                data-target="#modalRegisterForm">Register</a></li>
-                                        <li><a href="#" class="modal-view button" data-toggle="modal"
-                                                data-target="#modalLoginForm">login</a></li>
-                                    </ul>
-                                </div>
-                            </div> --}}
+                            <div class="wishlist cart-wrapper">
+                                <a href="{{ route('wishlist.index') }}">
+                                    <button type="button" class="btn">
+                                        <i class="material-icons">favorite</i><span
+                                            class="ttcount">{{ \App\Http\Controllers\WishlistController::wishlistCount() }}</span>
+                                    </button></a>
+                            </div>
                             <div class="cart-wrapper">
                                 <a href="{{ url('/cart') }}">
                                     <button type="button" class="btn">
 
-                                        <i class="material-icons">shopping_cart</i>
+                                        <i class="material-icons" style="padding-top: 13px;">shopping_cart</i>
                                         <span class="ttcount">{{ Cart::getTotalQuantity() }}</span></button></a>
                             </div>
                         </div>

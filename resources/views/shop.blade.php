@@ -98,11 +98,11 @@
                                                     <div class="button-wrapper">
                                                         <div class="button-group text-center">
                                                             <button type="button" class="btn btn-primary btn-cart"
-                                                                <?php if ($product->product_stock === 0): ?> disabled <?php endif; ?>
                                                                 data-target="#cart-pop" data-toggle="modal">
-                                                                <a href="{{ url('/cart') }}">
-                                                                    <i class="material-icons">shopping_cart</i><span>Add
-                                                                        to cart</span></a>
+                                                                <a
+                                                                    href="{{ route('wishlist.add', ['product_id' => $product->id]) }}">
+                                                                    <i class="material-icons">favorite</i><span>Add
+                                                                        to wishlist</span></a>
                                                             </button>
 
 

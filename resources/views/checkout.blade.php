@@ -38,6 +38,7 @@
                         <label for="zip">ZIP Code<span class="required">*</span></label>
                         <input type="text" id="zip" name="zip" class="form-control" required>
                     </div>
+
                 </div>
                 <div class="col-md-6">
                     <h3>Order Summary</h3>
@@ -67,9 +68,16 @@
                                     <td>${{ $item->price * $item->quantity }}</td>
                                 </tr>
                             @endforeach
+                            <tr>
+                                <td colspan="5" class="text-left"><strong>Shipping Fee:</strong></td>
+                                <td id="shipping-fee">${{ $shippingFee }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-left"><strong>Total Amount (excl. Tax):</strong></td>
+                                <td id="total-amount">${{ $totalAmount + $shippingFee }}</td>
+                            </tr>
                         </tbody>
                     </table>
-                    <p><strong>Total Amount:</strong> ${{ $totalAmount }}</p>
                     <button type="submit" id="submit-payment" class="btn btn-primary">Proceed to Payment</button>
                 </div>
             </div>

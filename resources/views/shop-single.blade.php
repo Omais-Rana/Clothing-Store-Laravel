@@ -112,6 +112,14 @@
                                 <button type="submit" class="btn btn-primary"><i
                                         class="material-icons">shopping_cart</i>Add to Cart</button>
                             </form>
+                            <form action="{{ route('wishlist.add', ['product_id' => $product->id]) }}">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-primary" style="font-size: 15px;margin-top: 15px;"><i
+                                        class="material-icons">favorite </i>
+                                    Wishlist It</button>
+                            </form>
+
                         </div>
 
                     </div>
