@@ -109,8 +109,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary"><i
-                                        class="material-icons">shopping_cart</i>Add to Cart</button>
+                                <button type="submit" class="btn btn-primary" <?php if ($product->product_stock === 0): ?> disabled
+                                    <?php endif; ?>><i class="material-icons">shopping_cart</i>Add to Cart</button>
                             </form>
                             <form action="{{ route('wishlist.add', ['product_id' => $product->id]) }}">
                                 @csrf
