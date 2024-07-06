@@ -125,13 +125,13 @@ class CheckoutController extends Controller
         $session = Session::retrieve($sessionId);
 
         if ($session->payment_status === 'paid') {
-            // $order = Order::where('email', $session->customer_email)
-            //     ->latest()
-            //     ->first();
+            $order = Order::where('email', $session->customer_email)
+                ->latest()
+                ->first();
 
-            // if ($order) {
-            //     Mail::to($order->email)->send(new OrderConfirmation($order));
-            // }
+            if ($order) {
+                Mail::to($order->email)->send(new OrderConfirmation($order));
+            }
 
             return view('checkout.success');
         }

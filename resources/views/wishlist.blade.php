@@ -35,7 +35,7 @@
                                         <form action="{{ route('wishlist.remove', $product->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i class="material-icons"
+                                            <button type="submit" class="btn"><i class="material-icons"
                                                     style="color: #2d2d2d">delete</i></button>
                                         </form>
                                     </td>

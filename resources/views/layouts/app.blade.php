@@ -387,7 +387,7 @@
                     </div>
                     <ul id="company" class="list-unstyled collapse">
                         <li>
-                            <a href="#">search</a>
+                            <a href="{{ url('/wishlist') }}">Wishlist</a>
                         </li>
                         <li>
                             <a href="{{ route('products.new') }}">New Products</a>
@@ -397,24 +397,6 @@
                         </li>
                     </ul>
                 </div>
-
-                {{-- <div class="col-md-2 footer-column">
-                    <div class="title">
-                        <a href="#account" class="font-weight-normal text-capitalize mb-10" data-toggle="collapse"
-                            aria-expanded="false">your account</a>
-                    </div>
-                    <ul id="account" class="list-unstyled collapse">
-                        <li>
-                            <a href="blog-details.html">personal info</a>
-                        </li>
-                        <li>
-                            <a href="#">orders</a>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">addresses</a>
-                        </li>
-                    </ul>
-                </div> --}}
                 <div class="col-md-4 footer-column">
                     <div class="title">
                         <a href="#information" class="font-weight-normal text-capitalize mb-10"
