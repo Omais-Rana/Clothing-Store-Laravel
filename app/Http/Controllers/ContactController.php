@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Http;
 
 class ContactController extends Controller
 {
@@ -22,6 +21,7 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
+        // Prepare email details
         $details = [
             'name' => $request->name,
             'email' => $request->email,
@@ -29,8 +29,24 @@ class ContactController extends Controller
             'message' => $request->message,
         ];
 
-        Mail::to('poshmarktradinguk@gmail.com')->send(new ContactMail($details));
+        // Send email via Mailgun
+        $recipient = 'prouser6969@gmail.com';
+        $domain = env('MAILGUN_DOMAIN');
+        $apiKey = env('MAILGUN_SECRET');
 
-        return back()->with('success', 'Your message has been sent successfully!');
+        $response = Http::withBasicAuth('api', $apiKey)
+            ->asForm()
+            ->post("https://api.mailgun.net/v3/$domain/messages", [
+                'from' => $details['email'],
+                'to' => $recipient,
+                'subject' => $details['subject'],
+                'html' => view('emails.contact', $details)->render(),
+            ]);
+
+        if ($response->successful()) {
+            return back()->with('success', 'Your message has been sent successfully!');
+        } else {
+            return back()->with('error', 'Failed to send your message.');
+        }
     }
 }

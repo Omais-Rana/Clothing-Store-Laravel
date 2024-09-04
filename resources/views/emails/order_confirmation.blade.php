@@ -102,28 +102,30 @@
         <div class="content">
             <h1>Order Confirmation</h1>
             <p>Hi {{ $order->name }},</p>
-            <p>Thank you for your order! We have received your payment and are processing your order. Below are the
-                details of your purchase:</p>
+            <p>Thank you for your order! Below are the details of your purchase:</p>
             <div class="order-details">
                 <h2>Order Details</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Item</th>
-                            <th>Price</th>
                             <th>Quantity</th>
-                            <th>Total</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (json_decode($order->product_details, true) as $item)
                             <tr>
                                 <td>{{ $item['name'] }}</td>
-                                <td>${{ number_format($item['price'], 2) }}</td>
                                 <td>{{ $item['quantity'] }}</td>
-                                <td>${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+                                <td>{{ $item['color'] }}</td>
+                                <td>{{ $item['size'] }}</td>
+                                <td>{{ $item['price'] }}</td>
                             </tr>
                         @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -132,7 +134,7 @@
                 <p><strong>Email:</strong> {{ $order->email }}</p>
                 <p><strong>Phone:</strong> {{ $order->phone }}</p>
                 <p><strong>Address:</strong> {{ $order->address }}, {{ $order->city }}, {{ $order->zip }}</p>
-                <p class="total"><strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}</p>
+                <p class="total"><strong>Total Amount:</strong> £{{ number_format($order->total_amount, 2) }}</p>
             </div>
             <p>If you have any questions or need further assistance, please contact our support team.</p>
             <p>Thank you for shopping with us!</p>

@@ -1,9 +1,16 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
 
-@section('content')
-    <div class="container">
-        <h1>Payment Successful!</h1>
-        <p>Thank you for your order. Your payment was processed successfully.</p>
-        <a href="{{ url('/') }}" class="btn btn-primary">Return to Home</a>
-    </div>
-@endsection
+<head>
+    <title>Message From Customer</title>
+</head>
+
+<body>
+    <p><strong>Name:</strong> {{ $name }}</p>
+    <p><strong>Email:</strong> {{ $email }}</p>
+    <p><strong>Subject:</strong> {{ $subject }}</p>
+    <p><strong>Message:</strong></p>
+    <p>{{ $message }}</p>
+</body>
+
+</html>
