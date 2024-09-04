@@ -9,6 +9,7 @@ use Stripe\Checkout\Session;
 use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderConfirmation;
+use App\Mail\AdminOrderNotification;
 
 class CheckoutController extends Controller
 {
@@ -131,6 +132,7 @@ class CheckoutController extends Controller
 
             if ($order) {
                 Mail::to($order->email)->send(new OrderConfirmation($order));
+                Mail::to('poshmarktradinguk@gmail.com')->send(new AdminOrderNotification($order));
             }
 
             return view('checkout.success');
