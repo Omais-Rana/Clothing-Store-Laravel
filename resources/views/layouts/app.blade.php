@@ -51,7 +51,7 @@
                                         width="18" /><span>English</span></button>
                             </div>
                             <div class="currency-wrapper toggle">
-                                <button type="button" class="btn text-capitalize"><span>$ US Dollar</span></button>
+                                <button type="button" class="btn text-capitalize"><span>£ British Pound</span></button>
                             </div>
                             <div class="contact">
                                 <i class="material-icons" style="color: #666">phone</i>

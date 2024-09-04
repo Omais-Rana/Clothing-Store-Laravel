@@ -16,7 +16,7 @@
                     <div class="card-block p-20">
                         <h3 class="card-title text-success">Purchase Successful</h3>
                         <p>
-                            A confirmation email will be sent shortly to your mail address.
+                            A confirmation email will be sent shortly to your provided mail address.
                         </p>
                     </div>
                 </div>

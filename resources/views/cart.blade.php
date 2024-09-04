@@ -16,7 +16,6 @@
     <!-- cart page area start here -->
     <section class="cart-page pb-130">
         <div class="container">
-
             <section class="bg-light my-5">
                 <div class="container">
                     <div class="row">
@@ -43,10 +42,15 @@
                                     </div>
 
                                     @foreach ($items as $item)
+                                        @php
+                                            $product = $item->associatedModel;
+                                            $minQuantity = $product->product_quantity;
+                                        @endphp
+
                                         <!-- Desktop View -->
                                         <div class="row gy-3 mb-4 align-items-center text-center d-none d-md-flex">
                                             <div class="col-md-2">
-                                                <?php $images = json_decode($item->associatedModel->product_images); ?>
+                                                <?php $images = json_decode($product->product_images); ?>
                                                 <img src="{{ Voyager::image($images[0]) }}" class="border rounded"
                                                     style="width: 96px; height: 96px;" alt="Product Image" />
                                             </div>
@@ -54,7 +58,7 @@
                                                 <h6>{{ $item->name }}</h6>
                                             </div>
                                             <div class="col-md-2">
-                                                <p class="text-muted">{{ Number::currency($item->price, 'USD') }}</p>
+                                                <p class="text-muted">{{ Number::currency($item->price, 'GBP') }}</p>
                                             </div>
                                             <div class="col-md-1">
                                                 @if (isset($item->attributes['size']) && is_string($item->attributes['size']))
@@ -71,23 +75,10 @@
                                                 @endif
                                             </div>
                                             <div class="col-md-2">
-                                                <div class="input-group bootstrap-touchspin">
-                                                    <span class="input-group-btn">
-                                                        <a href="{{ route('decrease.quantity', $item->id) }}"
-                                                            class="btn btn-light bootstrap-touchspin-down"
-                                                            type="button">-</a>
-                                                    </span>
-                                                    <input type="text" name="" value="{{ $item->quantity }}"
-                                                        class="form-control mx-1.5" />
-                                                    <span class="input-group-btn">
-                                                        <a href="{{ route('add.quantity', $item->id) }}"
-                                                            class="btn btn-light bootstrap-touchspin-up"
-                                                            type="button">+</a>
-                                                    </span>
-                                                </div>
+                                                <p>{{ $item->quantity }}</p>
                                             </div>
                                             <div class="col-md-1">
-                                                <p>${{ $item->quantity * $item->price }}</p>
+                                                <p>£{{ $item->quantity * $item->price }}</p>
                                             </div>
                                             <div class="col-md-1">
                                                 <a href="{{ route('remove.item', $item->id) }}"><i class="material-icons"
@@ -99,7 +90,7 @@
                                         <div class="row gy-3 mb-4 align-items-center text-center d-md-none">
                                             <div class="col-12 d-flex justify-content-between">
                                                 <div class="d-flex">
-                                                    <?php $images = json_decode($item->associatedModel->product_images); ?>
+                                                    <?php $images = json_decode($product->product_images); ?>
                                                     <img src="{{ Voyager::image($images[0]) }}" class="border rounded me-3"
                                                         style="width: 60px; height: 60px;" alt="Product Image" />
                                                     <div class="text-start" style="padding-left: 70px;">
@@ -112,6 +103,9 @@
                                                         <small class="text-muted d-block">
                                                             Color: {{ $item->attributes['color'] ?? 'Not specified' }}
                                                         </small>
+                                                        <small class="text-muted d-block">
+                                                            Quantity: {{ $item->quantity }}
+                                                        </small>
                                                     </div>
                                                 </div>
                                                 <div class="text-end">
@@ -122,29 +116,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 mt-2">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div>
-                                                        <div class="input-group bootstrap-touchspin">
-                                                            <span class="input-group-btn">
-                                                                <a href="{{ route('decrease.quantity', $item->id) }}"
-                                                                    class="btn btn-light bootstrap-touchspin-down"
-                                                                    type="button">-</a>
-                                                            </span>
-                                                            <input type="text" name=""
-                                                                value="{{ $item->quantity }}"
-                                                                class="form-control mx-1.5" />
-                                                            <span class="input-group-btn">
-                                                                <a href="{{ route('add.quantity', $item->id) }}"
-                                                                    class="btn btn-light bootstrap-touchspin-up"
-                                                                    type="button">+</a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mt-2">
-                                                <p>Total Price: ${{ $item->quantity * $item->price }}</p>
+                                                <p>Total Price: £{{ $item->quantity * $item->price }}</p>
                                             </div>
                                         </div>
 
@@ -154,10 +126,9 @@
                                     @endforeach
                                 </div>
                             </div>
-
-
                         </div>
                         <!-- cart -->
+
                         <!-- summary -->
                         <div class="col-lg-3">
                             <div class="card mb-3 border shadow-0 text-center" style="padding: 10px 0">
@@ -167,16 +138,13 @@
                             <div class="card shadow-0 border">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-
                                         <p class="mb-2">Total Items:</p>
                                         <p class="mb-2 fw-bold">{{ Cart::getTotalQuantity() }}</p>
                                     </div>
                                     <div class="d-flex justify-content-between">
-
                                         <p class="mb-2">Total Amount:</p>
-                                        <p class="mb-2 fw-bold">{{ Number::currency($total, 'USD') }}</p>
+                                        <p class="mb-2 fw-bold">{{ Number::currency($total, 'GBP') }}</p>
                                     </div>
-
                                     <div class="mt-3">
                                         <a href="{{ url('/checkout') }}" class="btn btn-primary w-100 shadow-0 mb-2">
                                             Checkout
@@ -187,7 +155,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <!-- summary -->
                     </div>

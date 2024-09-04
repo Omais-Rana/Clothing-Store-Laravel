@@ -88,10 +88,10 @@
 
                                                     </div>
                                                     <div class="price">
-                                                        <div class="regular-price">${{ $product->product_price }}
+                                                        <div class="regular-price">£{{ $product->product_price }}
                                                         </div>
                                                         @isset($product->product_cut_price)
-                                                            <div class="old-price">${{ $product->product_cut_price }}</div>
+                                                            <div class="old-price">£{{ $product->product_cut_price }}</div>
                                                         @endisset
 
                                                     </div>

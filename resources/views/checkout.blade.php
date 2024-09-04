@@ -46,7 +46,6 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
-                                <th>Price</th>
                                 <th>Size</th>
                                 <th>Color</th>
                                 <th>Quantity</th>
@@ -61,20 +60,19 @@
                                             width="50">
                                         {{ $item->name }}
                                     </td>
-                                    <td>${{ $item->price }}</td>
                                     <td>{{ $item->attributes['size'] ?? 'Not specified' }}</td>
                                     <td>{{ $item->attributes['color'] ?? 'Not specified' }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>${{ $item->price * $item->quantity }}</td>
+                                    <td>£{{ $item->price * $item->quantity }}</td>
                                 </tr>
                             @endforeach
                             <tr>
-                                <td colspan="5" class="text-left"><strong>Shipping Fee:</strong></td>
-                                <td id="shipping-fee">${{ $shippingFee }}</td>
+                                <td colspan="4" class="text-left"><strong>Shipping Fee:</strong></td>
+                                <td id="shipping-fee">£{{ $shippingFee }}</td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-left"><strong>Total Amount (excl. Tax):</strong></td>
-                                <td id="total-amount">${{ $totalAmount + $shippingFee }}</td>
+                                <td colspan="4" class="text-left"><strong>Total Amount (excl. Tax):</strong></td>
+                                <td id="total-amount">£{{ $totalAmount + $shippingFee }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -59,15 +59,15 @@
                                 for ensuring the best customer service and support.</p>
                             <div class="contact-wrapper">
                                 <div class="contact-list">
-                                    <i class="material-icons">place</i>
+                                    <i class="material-icons"style="color: #2d2d2d">place</i>
                                     <span>Address : 34 Broughton Street, Manchester , United Kingdom</span>
                                 </div>
                                 <div class="contact-list">
-                                    <i class="material-icons">call</i>
+                                    <i class="material-icons"style="color: #2d2d2d">call</i>
                                     <span>poshmarktradinguk@gmail.com</span>
                                 </div>
                                 <div class="contact-list">
-                                    <i class="material-icons">email</i>
+                                    <i class="material-icons" style="color: #2d2d2d">email</i>
                                     <span>+447534300611</span>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@
                         <div class="working-time">
                             <h5>Working hours</h5>
                             <div>
-                                <div>Monday – Friday</div>
-                                <div>09AM – 07PM</div>
+                                <div>Sunday – Friday</div>
+                                <div>10AM – 06PM</div>
                             </div>
                         </div>
                     </div>

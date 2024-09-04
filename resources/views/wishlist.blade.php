@@ -44,7 +44,7 @@
                                             style="width: 70px;"></td>
                                     <td class="table-p-name text-capitalize">{{ $product->product_name }}</td>
                                     <td class="table-p-price">
-                                        <p>${{ $product->product_price }}</p>
+                                        <p>£{{ $product->product_price }}</p>
                                     </td>
 
                                     <td class="table-p-qty">

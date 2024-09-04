@@ -12,22 +12,12 @@
                 <div class="ttloading-bg"></div>
                 <div class="slider slider-for owl-carousel">
                     @foreach ($banners as $banner)
-                        <?php $images = json_decode($banner->banner_images); ?>
-                        @foreach ($images as $image)
-                            <div>
-                                <a href="#">
-                                    <img src="{{ Voyager::image($image) }}" alt="" height="800" width="1600" />
-                                </a>
-                                <div class="slider-content-wrap center effect_top">
-                                    <div class="slider-title mb-20 text-capitalize float-left w-100">WHOLESALE WOMEN
-                                        CLOTHING
-                                    </div>
-                                    <div class="slider-button text-uppercase float-left w-100"><a
-                                            href="{{ route('products.all') }}">Shop
-                                            Now</a></div>
-                                </div>
-                            </div>
-                        @endforeach
+                        <div>
+                            <a href="#">
+                                <img src="{{ Voyager::image($banner->banner_images) }}" alt="" height="800"
+                                    width="1600" />
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -141,10 +131,10 @@
 
                                                             </div>
                                                             <div class="price">
-                                                                <div class="regular-price">${{ $product->product_price }}
+                                                                <div class="regular-price">£{{ $product->product_price }}
                                                                 </div>
                                                                 @isset($product->product_cut_price)
-                                                                    <div class="old-price">${{ $product->product_cut_price }}
+                                                                    <div class="old-price">£{{ $product->product_cut_price }}
                                                                     </div>
                                                                 @endisset
                                                             </div>
@@ -347,10 +337,10 @@
 
                                                 </div>
                                                 <div class="price">
-                                                    <div class="regular-price">${{ $product->product_price }}
+                                                    <div class="regular-price">£{{ $product->product_price }}
                                                     </div>
                                                     @isset($product->product_cut_price)
-                                                        <div class="old-price">${{ $product->product_cut_price }}</div>
+                                                        <div class="old-price">£{{ $product->product_cut_price }}</div>
                                                     @endisset
 
                                                 </div>

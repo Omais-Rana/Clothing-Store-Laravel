@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <style>
         h4.product-title {
@@ -79,14 +80,14 @@
                             </div>
                             {{-- Price --}}
                             <div class="price float-left w-100 d-flex">
-                                <div class="regular-price">${{ $product->product_price }}</div>
+                                <div class="regular-price">£{{ $product->product_price }}</div>
                                 @isset($product->product_cut_price)
-                                    <div class="old-price">${{ $product->product_cut_price }}</div>
+                                    <div class="old-price">£{{ $product->product_cut_price }}</div>
                                 @endisset
 
                             </div>
 
-                            {{-- Size, Color and Add to Cart --}}
+                            {{-- Size, Color, Quantity and Cart --}}
                             <form action="{{ route('add.cart', $product->id) }}" method="post">
                                 @csrf
                                 <div class="product-variants float-left w-100">
@@ -109,6 +110,13 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="quantity">Quantity:</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" value="1"
+                                        min="1" max="{{ $product->product_quantity }}" style="width: 22%" required>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary" <?php if ($product->product_stock === 0): ?> disabled
                                     <?php endif; ?>><i class="material-icons">shopping_cart</i>Add to Cart</button>
                             </form>
